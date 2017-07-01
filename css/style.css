@@ -3,11 +3,16 @@
 }
 /*this means that the margins and borders are included in the height and width measurements of the boxes*/
 
+
 aside {
   float: right;
   /*display: inline;*/
-  /*position: absolute;*/
-  max-width: 350px;
+  position: relative;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 40%;
+  margin-left: 2%;
   background: #EFD3D7
 }
 
@@ -18,32 +23,20 @@ body {
 }
 
 
-
 footer {
   clear: both;
   max-width: 600px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
+  /*display: block;*/
+  margin: 50px auto;
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
   line-height: 2;
-  /*position: absolute;*/
+  /*position: relative;*/
   /*bottom: 0;*/
   background: #FFB7C3
 }
-
-
-.clearfix:after {
-  /*visibility: hidden;*/
-  /*display: block;*/
-  height: 0;
-  font-size: 0;
-}
-
 
 
 .gridbox {
@@ -65,23 +58,22 @@ h1 {
   text-align: center
 }
 
+
 .leftside {
   /*position: relative;*/
   float: left;
-  width: 450px;
-  max-width: 450px;
+  max-width: 48%;
+  /*max-width: 450px;*/
   margin: 0 auto
 }
 
+
 main {
   max-width: 800px;
-  margin: 30px auto
+  margin: 30px auto;
+  overflow: auto
 }
 
-
-/*.playarea {
-  background: #CBC0D3;
-}*/
 
 ul {
   /*the LIs are 100px each with a margin of -3px so some maths is required*/
