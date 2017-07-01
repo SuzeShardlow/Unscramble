@@ -1,3 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+/*this means that the margins and borders are included in the height and width measurements of the boxes*/
+
+aside {
+  float: right;
+  /*display: inline;*/
+  /*position: absolute;*/
+  max-width: 350px;
+  background: #EFD3D7
+}
+
+
 body {
-  background: red
+  /*max-width: 400px;*/
+  background: #BCF4F5
+}
+
+
+
+footer {
+  clear: both;
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  line-height: 2;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  background: #FFB7C3
+}
+
+
+.clearfix:after {
+  /*visibility: hidden;*/
+  /*display: block;*/
+  height: 0;
+  font-size: 0;
+}
+
+
+
+.gridbox {
+  /*float: left;*/
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  margin: -3px;
+  border: 1px solid black;
+  background: #D9F2B4
+}
+
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 100px;
+  line-height: 150px;
+  color: white;
+  text-align: center
+}
+
+.leftside {
+  /*position: relative;*/
+  float: left;
+  width: 450px;
+  max-width: 450px;
+  margin: 0 auto
+}
+
+main {
+  max-width: 800px;
+  margin: 30px auto
+}
+
+
+/*.playarea {
+  background: #CBC0D3;
+}*/
+
+ul {
+  /*the LIs are 100px each with a margin of -3px so some maths is required*/
+  width: 428px;
+  border-top: 20px solid #8E9AAF;
+  border-right: 20px solid #8E9AAF;
+  border-bottom: 18px solid #8E9AAF;
+  border-left: 20px solid #8E9AAF;
+  border-radius: 15px
 }
