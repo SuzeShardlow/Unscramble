@@ -46,7 +46,12 @@ footer {
   width: 100px;
   margin: -3px;
   border: 1px solid black;
-  background: #D9F2B4
+  background: #D9F2B4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+  padding: 6px
 }
 
 
