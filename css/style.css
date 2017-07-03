@@ -40,18 +40,19 @@ footer {
 
 
 .gridbox {
+  /*change the margin here to get rid of thick black lines inbetween*/
   /*float: left;*/
   display: inline-block;
   height: 100px;
   width: 100px;
-  margin: -3px;
+  /*margin: -1px;*/
   border: 1px solid black;
   background: #D9F2B4;
   font-family: 'Roboto', sans-serif;
-  font-size: 80px;
+  font-size: 65px;
   font-weight: bold;
   text-align: center;
-  padding: 6px
+  padding: 15px 0 0 0
 }
 
 
@@ -82,10 +83,12 @@ main {
 
 ul {
   /*the LIs are 100px each with a margin of -3px so some maths is required*/
-  width: 428px;
+  /*originally 428px wide*/
+  width: 440px;
+  /*height: 418px;*/
   border-top: 20px solid #8E9AAF;
   border-right: 20px solid #8E9AAF;
-  border-bottom: 18px solid #8E9AAF;
+  border-bottom: 20px solid #8E9AAF;
   border-left: 20px solid #8E9AAF;
   border-radius: 15px
 }

@@ -21,6 +21,10 @@ $(() => {
   // ensuring the DOM is loaded before we start
   // all the below commands need the DOM to be loaded before they can run
 
+
+  // Want to take each item of the GRIDS and put it into one of the GRIDBOXes
+
+
   p1.populateBoard = function populateBoard() {
     console.log('These are the grids', grids);
 
@@ -92,7 +96,6 @@ const grids = [
   [14, 6, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
 ];
 
-// Want to take each item of the GRIDS and put it into one of the GRIDBOXes
 
 
 let $liArray = ($('li').toArray());
