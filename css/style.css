@@ -58,7 +58,7 @@ footer {
 }
 
 .gridbox:empty {
-  border: none;
+  border-color: #CBD1DA;
   background: #CBD1DA
 }
 

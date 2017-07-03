@@ -39,7 +39,7 @@ $(() => {
     $.each(scrambledGrid, function(i) { // we're going to run this function for all the items in the array
     const li = $('<li/>') // creating the LI tags
     .addClass('gridbox') // adding the class
-    .addClass('font-effect-emboss')
+    .addClass('font-effect-emboss') // adding another class
     .attr('id', [i]) // giving each of them a unique id, starting with 0 for the first one
     .appendTo(boardList) // appending them to the UL
     .text(scrambledGrid[i]); // putting the text in from the array
@@ -47,23 +47,22 @@ $(() => {
 
 
 
-
   p1.getFirstBlankTile = function getBlankTile() {
     let firstBlankTile = scrambledGrid.indexOf(null);
-    console.log('The blank tile is ' + firstBlankTile);
-// this works!
+    console.log('The first blank tile is ' + firstBlankTile);
+    // this works!!!
 
   };
 
-p1.getFirstBlankTile(); // invoking the function
+  p1.getFirstBlankTile(); // invoking the function
+
+
+
+
 
 };
 
 p1.populateBoard(); // invoking the function
-
-// let blankTile = scrambledGrid.find()
-
-
 
 
 
@@ -74,6 +73,8 @@ p1.getClick = function getClick() {
 
   // we only want to listen for clicks on the tiles touching the blank one
 
+  let $firstClickableTiles = legalMoves[firstBlankTile];
+  console.log($firstClickableTiles);
 
 
   let $boxes = $('.gridbox');
@@ -86,7 +87,8 @@ p1.getClick = function getClick() {
     console.log(e);
   });
 };
-});
+
+}); // the last brace and bracket of the DOM loading function
 
 
 p1.setup = function setup() {
@@ -95,20 +97,17 @@ p1.setup = function setup() {
 };
 
 
-
-
-
-const grids = [ // with ''
-[ '3', '6',  '7', '10',  '5',  '9', '15',  null,  '4', '13', '12',  '2',  '1',  '8', '14', '11'],
-[ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  null,  2,  1, 13],
-[ 2, 6, 11,  3,  null, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
-[ null, 8,  7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
-[ 5, 6, 10,  1,  3,  null, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
-[ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15,  null, 14, 12, 11,  6],
-[ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14,  null],
-[ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  null,  9,  4, 13, 12, 11],
-[ 9, 1,  4,  7,  6, 14,  3,  null,  8, 10,  2,  5, 11, 13, 15, 12],
-[14, 6,  null, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
+const grids = [
+  [ 3, 6,  7, 10,  5,  9, 15,  null,  4, 13, 12,  2,  1,  8, 14, 11],
+  [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  null,  2,  1, 13],
+  [ 2, 6, 11,  3,  null, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
+  [ null, 8,  7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
+  [ 5, 6, 10,  1,  3,  null, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
+  [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15,  null, 14, 12, 11,  6],
+  [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14,  null],
+  [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  null,  9,  4, 13, 12, 11],
+  [ 9, 1,  4,  7,  6, 14,  3,  null,  8, 10,  2,  5, 11, 13, 15, 12],
+  [14, 6,  null, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
 ];
 
 const legalMoves = [
@@ -131,37 +130,7 @@ const legalMoves = [
 ];
 
 
-
-
 $(p1.setup.bind(p1)); // function to sort any THIS issues
-
-
-// const grids = [ // with zeroes
-//   [ 3, 6,  7, 10,  5,  9, 15,  0,  4, 13, 12,  2,  1,  8, 14, 11],
-//   [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  0,  2,  1, 13],
-//   [ 2, 6, 11,  3,  0, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
-//   [ 0, 8,  7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
-//   [ 5, 6, 10,  1,  3,  0, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
-//   [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15,  0, 14, 12, 11,  6],
-//   [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14,  0],
-//   [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  0,  9,  4, 13, 12, 11],
-//   [ 9, 1,  4,  7,  6, 14,  3,  0,  8, 10,  2,  5, 11, 13, 15, 12],
-//   [14, 6,  0, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
-// ];
-
-// const grids = [ // without zeroes
-//   [ 3, 6,  7, 10,  5,  9, 15,  4, 13, 12,  2,  1,  8, 14, 11],
-//   [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  2,  1, 13],
-//   [ 2, 6, 11,  3, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
-//   [ 8, 7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
-//   [ 5, 6, 10,  1,  3, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
-//   [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15, 14, 12, 11,  6],
-//   [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14],
-//   [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  9,  4, 13, 12, 11],
-//   [ 9, 1,  4,  7,  6, 14,  3,  8, 10,  2,  5, 11, 13, 15, 12],
-//   [14, 6, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
-// ];
-
 
 
 // const legalMoves0 = [1, 4];
