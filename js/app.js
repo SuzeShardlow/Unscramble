@@ -8,39 +8,58 @@
 // - If a number is in the correct position, turn the background green
 // - When all the numbers are in the correct position, tell the player they have won and ask if they want to play again
 
-
-
+var p1 = p1 || {};
 
 $(() => {
   console.log('loaded');
   // ensuring the DOM is loaded before we start
 });
 
-var p1 = p1 || {};
-
-const grids = [
-[ 3, 6,  7, 10,  5,  9, 15,  4, 13, 12,  2,  1,  8, 14, 11],
-[ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  2,  1, 13],
-[ 2, 6, 11,  3, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
-[ 8, 7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
-[ 5, 6, 10,  1,  3, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
-[ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15, 14, 12, 11,  6],
-[ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14],
-[ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  9,  4, 13, 12, 11],
-[ 9, 1,  4,  7,  6, 14,  3,  8, 10,  2,  5, 11, 13, 15, 12],
-[14, 6, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
-];
 
 p1.setup = function setup() {
   console.log('The function SETUP is running.');
   p1.getClick(); // invoking getClick
 };
 
+const grids = [
+  [ 3, 6,  7, 10,  5,  9, 15,  4, 13, 12,  2,  1,  8, 14, 11],
+  [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  2,  1, 13],
+  [ 2, 6, 11,  3, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
+  [ 8, 7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
+  [ 5, 6, 10,  1,  3, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
+  [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15, 14, 12, 11,  6],
+  [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14],
+  [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  9,  4, 13, 12, 11],
+  [ 9, 1,  4,  7,  6, 14,  3,  8, 10,  2,  5, 11, 13, 15, 12],
+  [14, 6, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
+];
+
+// Want to take each item of the GRIDS and put it into one of the GRIDBOXes
+
+let gridNumber = Math.floor((Math.random() * 10));
+
 p1.getGrid = function getGrid() {
-  let scrambledGrid = grids[Math.floor((Math.random() * 10) + 1)];
-  console.log('This is the grid we will use: ', scrambledGrid);
+  let scrambledGrid = grids[gridNumber];
+  console.log('This is the grid we will use: ', 'number ' + gridNumber, scrambledGrid);
 };
 p1.getGrid();
+
+p1.populateBoard = function populateBoard() {
+  console.log('These are the grids', grids);
+
+  let html='';
+  for (let i = 1; i <= gridNumber.length; i++) {
+    html+='<li>' + gridNumber[i] + '</li>';
+  }
+  document.getElementById('gridnumber').innerHTML+= html;
+
+};
+
+p1.populateBoard(); // invoking the function
+
+
+
+
 
 
 let $liArray = ($('li').toArray());
@@ -48,14 +67,6 @@ let $liArray = ($('li').toArray());
 console.log('This is an array of the LIs', $liArray);
 
 
-
-
-p1.populateBoard = function populateBoard() {
-  console.log('These are the grids', grids);
-
-};
-
-p1.populateBoard(); // invoking the function
 
 p1.getClick = function getClick() {
   // a function to listen for clicks
