@@ -10,9 +10,34 @@
 
 var p1 = p1 || {};
 
+
+
+let gridNumber = Math.floor((Math.random() * 10));
+console.log(gridNumber);
+
+
 $(() => {
   console.log('loaded');
   // ensuring the DOM is loaded before we start
+  // all the below commands need the DOM to be loaded before they can run
+
+  p1.populateBoard = function populateBoard() {
+    console.log('These are the grids', grids);
+
+    let html='';
+    for (let i = 0; i <= gridNumber.length; i++) {
+      html+='<li>' + gridNumber[i] + '</li>';
+    }
+    document.getElementById('gridNumber').innerHTML+= html;
+
+  };
+
+  p1.populateBoard(); // invoking the function
+
+
+
+
+
 });
 
 
@@ -36,30 +61,11 @@ const grids = [
 
 // Want to take each item of the GRIDS and put it into one of the GRIDBOXes
 
-let gridNumber = Math.floor((Math.random() * 10));
-
 p1.getGrid = function getGrid() {
   let scrambledGrid = grids[gridNumber];
   console.log('This is the grid we will use: ', 'number ' + gridNumber, scrambledGrid);
 };
 p1.getGrid();
-
-p1.populateBoard = function populateBoard() {
-  console.log('These are the grids', grids);
-
-  let html='';
-  for (let i = 1; i <= gridNumber.length; i++) {
-    html+='<li>' + gridNumber[i] + '</li>';
-  }
-  document.getElementById('gridnumber').innerHTML+= html;
-
-};
-
-p1.populateBoard(); // invoking the function
-
-
-
-
 
 
 let $liArray = ($('li').toArray());
@@ -88,6 +94,26 @@ p1.getClick = function getClick() {
 
 
 
+const legalMoves = [
+  [1, 4], // box 0 ie the first one
+  [0, 2, 5],
+  [1, 3, 6],
+  [2, 7],
+  [0, 5, 8],
+  [1, 4, 6, 9],
+  [2, 5, 7, 10],
+  [3, 6, 11],
+  [4, 9, 12],
+  [5, 8, 10, 13],
+  [6, 9, 11, 14],
+  [7, 10, 15],
+  [8, 13],
+  [9, 12, 14],
+  [10, 13, 15],
+  [11, 14]
+];
+
+
 // const legalMoves0 = [1, 4];
 // const legalMoves1 = [0, 2, 5];
 // const legalMoves2 = [1, 3, 6];
@@ -105,22 +131,22 @@ p1.getClick = function getClick() {
 // const legalMoves14 = [10, 13, 15];
 // const legalMoves15 = [11, 14];
 
-const legalMoves1 = [2, 5];
-const legalMoves2 = [1, 3, 6];
-const legalMoves3 = [2, 4, 7];
-const legalMoves4 = [3, 8];
-const legalMoves5 = [1, 6, 9];
-const legalMoves6 = [2, 5, 7, 10];
-const legalMoves7 = [3, 6, 8, 11];
-const legalMoves8 = [4, 7, 12];
-const legalMoves9 = [5, 10, 13];
-const legalMoves10 = [6, 9, 11, 14];
-const legalMoves11 = [7, 10, 12, 15];
-const legalMoves12 = [8, 11, 16];
-const legalMoves13 = [9, 14];
-const legalMoves14 = [10, 13, 15];
-const legalMoves15 = [11, 14, 16];
-const legalMoves16 = [12, 15];
+// const legalMoves1 = [2, 5];
+// const legalMoves2 = [1, 3, 6];
+// const legalMoves3 = [2, 4, 7];
+// const legalMoves4 = [3, 8];
+// const legalMoves5 = [1, 6, 9];
+// const legalMoves6 = [2, 5, 7, 10];
+// const legalMoves7 = [3, 6, 8, 11];
+// const legalMoves8 = [4, 7, 12];
+// const legalMoves9 = [5, 10, 13];
+// const legalMoves10 = [6, 9, 11, 14];
+// const legalMoves11 = [7, 10, 12, 15];
+// const legalMoves12 = [8, 11, 16];
+// const legalMoves13 = [9, 14];
+// const legalMoves14 = [10, 13, 15];
+// const legalMoves15 = [11, 14, 16];
+// const legalMoves16 = [12, 15];
 
 
 
