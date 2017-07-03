@@ -13,6 +13,8 @@ var p1 = p1 || {};
 let gridNumber = Math.floor((Math.random() * 10)); // this chooses one grid number to be picked from the array of arrays
 console.log('The grid number is ' + gridNumber);
 
+var firstBlankTile;
+
 $(() => {
   console.log('The DOM is loaded.');
   // ensuring the DOM is loaded before we start
@@ -26,15 +28,14 @@ $(() => {
   // };
   // p1.getGrid(); // invokes the above function (but this function may not be needed)
 
-  let $liArray = ($('li').toArray()); // this puts all the created LIs into a function should it be needed
-  console.log('This is an array of the LIs', $liArray);
-
 
   p1.populateBoard = function populateBoard() {
     console.log('These are the grids', grids);
 
     let scrambledGrid = grids[gridNumber]; // scrambledGrid is assigned as the actual index (grid) to be picked from the array
     let boardList = $('ul.gameboard'); //boardList is the name given to the enclosing UL for the LIs
+
+    let $lis = []; // an array to store the LI tags and IDs
 
     $.each(scrambledGrid, function(i) { // we're going to run this function for all the items in the array
     const li = $('<li/>') // creating the LI tags
@@ -43,12 +44,12 @@ $(() => {
     .attr('id', [i]) // giving each of them a unique id, starting with 0 for the first one
     .appendTo(boardList) // appending them to the UL
     .text(scrambledGrid[i]); // putting the text in from the array
-  });
+});
 
 
 
   p1.getFirstBlankTile = function getBlankTile() {
-    let firstBlankTile = scrambledGrid.indexOf(null);
+    firstBlankTile = scrambledGrid.indexOf(null);
     console.log('The first blank tile is ' + firstBlankTile);
     // this works!!!
 
@@ -74,18 +75,48 @@ p1.getClick = function getClick() {
   // we only want to listen for clicks on the tiles touching the blank one
 
   let $firstClickableTiles = legalMoves[firstBlankTile];
-  console.log($firstClickableTiles);
+  console.log('The legal moves for tile ' + firstBlankTile + ' are ' + $firstClickableTiles);
 
 
-  let $boxes = $('.gridbox');
+  $.each($firstClickableTiles, function(i) { // we're going to run this function for all the items in the array
+  let clickable = $('<li/>') // creating the LI tags
+  .addClass('gridbox') // adding the class
+  .addClass('font-effect-emboss') // adding another class
+  .attr('id', [i]) // giving each of them a unique id, starting with 0 for the first one
+  .appendTo(boardList) // appending them to the UL
+  .text(scrambledGrid[i]); // putting the text in from the array
+});
 
-  $boxes.on('click', (e) => {
-    var $clickedBox = $(e.delegateTarget);
-    console.log('This is the box that has been clicked:', $clickedBox);
 
-    $(e.delegateTarget).css('background', 'red');
-    console.log(e);
-  });
+
+
+
+  // for (var j = 0; j < $firstClickableTiles.length; j++) {
+  //
+  //   $('li#j').on('click', (e) => {
+  //     var $clickedBox = $(e.delegateTarget);
+  //     console.log('This is the box that has been clicked:', $clickedBox);
+  //
+  //     $(e.delegateTarget).css('background', '#ff8080');
+  //     console.log(e);
+  //
+  //
+  //   });
+  //
+  // }
+
+
+  // let $boxes = $('.gridbox');
+  //
+  // console.log($boxes);
+  //
+  // $boxes.on('click', (e) => {
+  //   var $clickedBox = $(e.delegateTarget);
+  //   console.log('This is the box that has been clicked:', $clickedBox);
+  //
+  //   $(e.delegateTarget).css('background', '#ff8080');
+  //   console.log(e);
+  // });
 };
 
 }); // the last brace and bracket of the DOM loading function
