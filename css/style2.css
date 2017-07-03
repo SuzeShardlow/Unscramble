@@ -50,7 +50,6 @@ footer {
   border-radius: 10px;
   background: #D9F2B4;
   font-family: 'Roboto', sans-serif;
-  color: white;
   font-size: 65px;
   font-weight: bold;
   text-align: center;
@@ -58,8 +57,7 @@ footer {
 }
 
 .gridbox:empty {
-  border: none;
-  background: #CBD1DA
+
 }
 
 

@@ -39,6 +39,7 @@ $(() => {
     $.each(scrambledGrid, function(i) { // we're going to run this function for all the items in the array
     const li = $('<li/>') // creating the LI tags
     .addClass('gridbox') // adding the class
+    .addClass('font-effect-emboss')
     .attr('id', [i]) // giving each of them a unique id, starting with 0 for the first one
     .appendTo(boardList) // appending them to the UL
     .text(scrambledGrid[i]); // putting the text in from the array
