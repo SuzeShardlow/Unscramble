@@ -24,11 +24,44 @@ $(() => {
   p1.populateBoard = function populateBoard() {
     console.log('These are the grids', grids);
 
-    let html='';
-    for (let i = 0; i <= gridNumber.length; i++) {
-      html+='<li>' + gridNumber[i] + '</li>';
-    }
-    document.getElementById('gridNumber').innerHTML+= html;
+    let scrambledGrid = grids[gridNumber];
+    let boardList = $('ul.gameboard')
+
+    $.each(scrambledGrid, function(i) {
+      var li = $('<li/>')
+      .addClass('gridbox')
+      .attr('role', 'menuitem')
+      .appendTo(boardList)
+      .text(scrambledGrid[i]);
+      // var aaa = $('<a/>')
+      //     .addClass('ui-all')
+      //     .text(countries[i])
+      //     .appendTo(li);
+    });
+
+
+
+    p1.getGrid = function getGrid() {
+      let scrambledGrid = grids[gridNumber];
+      console.log('This is the grid we will use: ', 'number ' + gridNumber, scrambledGrid);
+    };
+    p1.getGrid();
+
+
+
+
+
+
+
+
+
+
+
+    // let html='';
+    // for (let i = 0; i <= gridNumber.length; i++) {
+    //   html+='<li>' + gridNumber[i] + '</li>';
+    // }
+    // document.getElementById('gridNumber').innerHTML+= html;
 
   };
 
@@ -60,12 +93,6 @@ const grids = [
 ];
 
 // Want to take each item of the GRIDS and put it into one of the GRIDBOXes
-
-p1.getGrid = function getGrid() {
-  let scrambledGrid = grids[gridNumber];
-  console.log('This is the grid we will use: ', 'number ' + gridNumber, scrambledGrid);
-};
-p1.getGrid();
 
 
 let $liArray = ($('li').toArray());
@@ -114,6 +141,16 @@ const legalMoves = [
 ];
 
 
+
+
+$(p1.setup.bind(p1)); // function to sort any THIS issues
+
+
+
+
+
+
+
 // const legalMoves0 = [1, 4];
 // const legalMoves1 = [0, 2, 5];
 // const legalMoves2 = [1, 3, 6];
@@ -147,9 +184,3 @@ const legalMoves = [
 // const legalMoves14 = [10, 13, 15];
 // const legalMoves15 = [11, 14, 16];
 // const legalMoves16 = [12, 15];
-
-
-
-
-
-$(p1.setup.bind(p1)); // function to sort any THIS issues
