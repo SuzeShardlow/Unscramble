@@ -11,19 +11,16 @@
 var p1 = p1 || {};
 
 let gridNumber = Math.floor((Math.random() * 10)); // this chooses one grid number to be picked from the array of arrays
-
 var scrambledGrid; // scrambledGrid is assigned as the actual index (grid) to be picked from the array
 var boardList; //boardList is the name given to the enclosing UL for the LIs
 var $lis = []; // an array to store the LI tags and IDs
+var firstEmptyBox;
 
-
-var firstBlankTile;
 
 $(() => {
   console.log('The DOM is loaded.');
   // ensuring the DOM is loaded before we start
   // all the below commands need the DOM to be loaded before they can run
-
 
   p1.getGrid = function getGrid() {
     // picks a random grid from the array
@@ -31,10 +28,8 @@ $(() => {
     scrambledGrid = grids[gridNumber]; // scrambledGrid is assigned as the actual index (grid) to be picked from the array
     boardList = $('ul.gameboard'); //boardList is the name given to the enclosing UL for the LIs
     console.log('This is the grid we will use: ', 'number ' + gridNumber, scrambledGrid); // outputs the index number and the contents of it
-  };
-
+  }; // end of getGrid
   p1.getGrid(); // invokes the above function
-
 
   p1.populateBoard = function populateBoard() {
     console.log('These are the grids', grids);
@@ -42,81 +37,74 @@ $(() => {
     $lis = []; // an array to store the LI tags and IDs
 
     $.each(scrambledGrid, function(i) { // we're going to run this function for all the items in the array
-      const li = $('<li/>') // creating the LI tags
+    const li = $('<li/>') // creating the LI tags
     .addClass('gridbox') // adding the class
     .addClass('font-effect-emboss') // adding another class
     .attr('id', [i]) // giving each of them a unique id, starting with 0 for the first one
     .appendTo(boardList) // appending them to the UL
     .text(scrambledGrid[i]); // putting the text in from the array
-    });
+  }); // end of .each
 
-
-
-  p1.getFirstBlankTile = function getBlankTile() {
-    firstBlankTile = scrambledGrid.indexOf(null);
-    console.log('The first blank tile is ' + firstBlankTile);
-    // this works!!!
-  };
-
-  p1.getFirstBlankTile(); // invoking the function
-
-
-
-
-
-};
-
+}; // end of populateBoard
 p1.populateBoard(); // invoking the function
 
-
-
+p1.getFirstEmptyBox = function getFirstEmptyBox() {
+  firstEmptyBox = scrambledGrid.indexOf(null);
+  console.log('The first blank tile is ' + firstEmptyBox);
+  // this works!!!
+  console.log('The legal moves for this tile are ' + legalMoves[firstEmptyBox]);
+}; // end of getFirstBlankTile
+p1.getFirstEmptyBox(); // invoking the function
 
 p1.getClick = function getClick() {
   // a function to listen for clicks
   console.log('Now we shall listen for clicks.');
-
   // we only want to be able to move tiles touching the blank one... let's start by changing the colour of them to test the process
 
-
-
-
-
-
-  //   // for (var j = 0; j < $firstClickableTiles.length; j++) {
-  //   //
-  //   //   $('li#j').on('click', (e) => {
-  //   //     var $clickedBox = $(e.delegateTarget);
-  //   //     console.log('This is the box that has been clicked:', $clickedBox);
-  //   //
-  //   //     $(e.delegateTarget).css('background', '#ff8080');
-  //   //     console.log(e);
-  //   //
-  //   //
-  //   //   });
-  //   //
-  //   // }
-
-
-  let $boxes = $('.gridbox');
+  let $boxes = $('.gridbox'); // these are all the boxes in the grid
 
   console.log($boxes);
 
+  // need to check the clicked box against the list of legalMoves for the empty box
+
   $boxes.on('click', (e) => {
-    var $clickedBox = $(e.delegateTarget);
+    var $clickedBox = parseInt(($(e.currentTarget).attr('id')));
     console.log('This is the box that has been clicked:', $clickedBox);
 
-    $(e.delegateTarget).css('background', '#ff8080');
-    console.log(e);
-  });
-};
+    for (var j = 0; j < legalMoves[firstEmptyBox].length; j++) {
+      if (
+        legalMoves[firstEmptyBox].indexOf($clickedBox) != -1
+      ) {
+        $(e.currentTarget).css('background', '#ff8080');
+      }
+      console.log(legalMoves[firstEmptyBox].indexOf($clickedBox));
+
+    }
+
+  }); // end of click event
+}; // end of getClick
 
 }); // the last brace and bracket of the DOM loading function
-
 
 p1.setup = function setup() {
   console.log('The function SETUP is running.');
   p1.getClick(); // invoking getClick
-};
+}; // end of p1.setup
+
+//   // for (var j = 0; j < $firstClickableTiles.length; j++) {
+//   //
+//   //   $('li#j').on('click', (e) => {
+//   //     var $clickedBox = $(e.delegateTarget);
+//   //     console.log('This is the box that has been clicked:', $clickedBox);
+//   //
+//   //     $(e.delegateTarget).css('background', '#ff8080');
+//   //     console.log(e);
+//   //
+//   //
+//   //   });
+//   //
+//   // }
+
 
 
 const grids = [
