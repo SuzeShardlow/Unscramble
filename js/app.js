@@ -1,94 +1,80 @@
-// Pseudocode
-//
-// - Take a scrambled grid from the list
-// - Put the numbers into the game board
-// - Listen for a click on one of the boxes
-// - If it is a box which touches the empty box, move the number into the empty box
-// - If it is not, do nothing
-// - If a number is in the correct position, turn the background green
-// - When all the numbers are in the correct position, tell the player they have won and ask if they want to play again
-
 var p1 = p1 || {};
 
-let gridNumber = Math.floor((Math.random() * 10)); // this chooses one grid number to be picked from the array of arrays
-var scrambledGrid; // scrambledGrid is assigned as the actual index (grid) to be picked from the array
-var boardList; //boardList is the name given to the enclosing UL for the LIs
-var $lis = []; // an array to store the LI tags and IDs
-var emptyBox;
+let gridNumber = Math.floor((Math.random() * 10));
+var chosenGrid;
+var $boardList;
+var $lis = [];
+var $emptyBox;
 var $clickedBox;
+var $newText;
 
 $(() => {
   console.log('The DOM is loaded.');
-  // ensuring the DOM is loaded before we start
-  // all the below commands need the DOM to be loaded before they can run
 
   p1.getGrid = function getGrid() {
-    // picks a random grid from the array
 
-    scrambledGrid = grids[gridNumber]; // scrambledGrid is assigned as the actual index (grid) to be picked from the array
-    boardList = $('ul.gameboard'); //boardList is the name given to the enclosing UL for the LIs
-    console.log('This is the grid we will use: ', 'number ' + gridNumber, scrambledGrid); // outputs the index number and the contents of it
+    chosenGrid = grids[gridNumber];
+    $boardList = $('ul.gameboard');
+    console.log('This is the grid we will use: ', 'number ' + gridNumber, chosenGrid);
   }; // end of getGrid
-  p1.getGrid(); // invokes the above function
+  p1.getGrid();
 
   p1.populateBoard = function populateBoard() {
     console.log('These are the grids', grids);
 
-    $lis = []; // an array to store the LI tags and IDs
+    $.each(chosenGrid, function(i) {
 
-    $.each(scrambledGrid, function(i) { // we're going to run this function for all the items in the array
-    const li = $('<li/>') // creating the LI tags
-    .addClass('gridbox') // adding the class
-    .addClass('font-effect-emboss') // adding another class
-    .attr('id', [i]) // giving each of them a unique id, starting with 0 for the first one
-    .appendTo(boardList) // appending them to the UL
-    .text(scrambledGrid[i]); // putting the text in from the array
-  }); // end of .each
-
-}; // end of populateBoard
-p1.populateBoard(); // invoking the function
-
-
-// p1.getFirstEmptyBox = function getFirstEmptyBox() {
-//   emptyBox = scrambledGrid.indexOf(null);
-//   console.log('The blank tile is ' + emptyBox);
-//   // this works!!!
-//   console.log('The legal moves for this tile are ' + legalMoves[emptyBox]);
-// }; // end of getFirstBlankTile
-// p1.getFirstEmptyBox(); // invoking the function
-
-p1.getClick = function getClick() {
-  // a function to listen for clicks
-  console.log('Now we shall listen for clicks.');
-  emptyBox = scrambledGrid.indexOf(null);
-  console.log('The blank tile is ' + emptyBox + '.');
-  console.log('The legal moves for this tile are ' + legalMoves[emptyBox] + '.');
-
-  // we only want to be able to move tiles touching the blank one... let's start by changing the colour of them to test the process --- DONE
-  // now we want to move that number into the vacant space
-
-  let $boxes = $('.gridbox'); // these are all the boxes in the grid
-
-  console.log($boxes);
-
-  $boxes.on('click', (e) => { // when we click, we are checking to see if it is a legal move
-
-    $clickedBox = parseInt(($(e.currentTarget).attr('id')));
-    console.log('This is the box that has been clicked:', $clickedBox);
-
-    for (var j = 0; j < legalMoves[emptyBox].length; j++) { // seeing if the clicked box is in the legalMoves array for the empty box
-      if (
-        legalMoves[emptyBox].indexOf($clickedBox) !== -1
-      ) {
-        $(e.currentTarget).text(''); // makes the clicked box :empty
+      const li = $('<li/>')
+      .addClass('gridbox')
+      .addClass('font-effect-emboss')
+      .attr('id', [i])
+      .appendTo($boardList)
+      .text(chosenGrid[i]);
+      console.log(li);
+    }); // end of .each
+  }; // end of populateBoard
+  p1.populateBoard();
 
 
+  p1.getLis = function getLis() {
+    console.log('helloooooooo');
+
+    // $lis = $('.gridbox');
+    console.log('These are the LIs: ' + $('.gridbox'));
+
+
+    // userSequence = [];
+    // for (var k = 0; k < $("li").length; k++ ) {
+    //   console.log('Here are the LIs: ' + $lis[k]);
+    // }
+  };
+  p1.getLis();
+
+
+  p1.getClick = function getClick() {
+    console.log('Now we shall listen for clicks.');
+    $emptyBox = chosenGrid.indexOf(null);
+    console.log('The blank tile is ' + $emptyBox + '.');
+    console.log('The legal moves for this tile are ' + legalMoves[$emptyBox] + '.');
+
+    let $boxes = $('.gridbox');
+    console.log($boxes);
+
+    $boxes.on('click', (e) => {
+
+      $clickedBox = parseInt(($(e.currentTarget).attr('id')));
+      console.log('This is the box that has been clicked:', $clickedBox);
+
+      for (var j = 0; j < legalMoves[$emptyBox].length; j++) {
+        if (
+          legalMoves[$emptyBox].indexOf($clickedBox) !== -1
+        ) {
+          $(e.currentTarget).text(null);
+        }
+        console.log(legalMoves[$emptyBox].indexOf($clickedBox));
       }
-      console.log(legalMoves[emptyBox].indexOf($clickedBox));
-    }
-  }); // end of click event
-}; // end of getClick
-
+    }); // end of click event
+  }; // end of getClick
 
 }); // the last brace and bracket of the DOM loading function
 
@@ -96,20 +82,6 @@ p1.setup = function setup() {
   console.log('The function SETUP is running.');
   p1.getClick(); // invoking getClick
 }; // end of p1.setup
-
-//   // for (var j = 0; j < $firstClickableTiles.length; j++) {
-//   //
-//   //   $('li#j').on('click', (e) => {
-//   //     var $clickedBox = $(e.delegateTarget);
-//   //     console.log('This is the box that has been clicked:', $clickedBox);
-//   //
-//   //     $(e.delegateTarget).css('background', '#ff8080');
-//   //     console.log(e);
-//   //
-//   //
-//   //   });
-//   //
-//   // }
 
 const solved = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -145,40 +117,4 @@ const legalMoves = [
   [11, 14]
 ];
 
-
 $(p1.setup.bind(p1)); // function to sort any THIS issues
-
-
-// const legalMoves0 = [1, 4];
-// const legalMoves1 = [0, 2, 5];
-// const legalMoves2 = [1, 3, 6];
-// const legalMoves3 = [2, 7];
-// const legalMoves4 = [0, 5, 8];
-// const legalMoves5 = [1, 4, 6, 9];
-// const legalMoves6 = [2, 5, 7, 10];
-// const legalMoves7 = [3, 6, 11];
-// const legalMoves8 = [4, 9, 12];
-// const legalMoves9 = [5, 8, 10, 13];
-// const legalMoves10 = [6, 9, 11, 14];
-// const legalMoves11 = [7, 10, 15];
-// const legalMoves12 = [8, 13];
-// const legalMoves13 = [9, 12, 14];
-// const legalMoves14 = [10, 13, 15];
-// const legalMoves15 = [11, 14];
-
-// const legalMoves1 = [2, 5];
-// const legalMoves2 = [1, 3, 6];
-// const legalMoves3 = [2, 4, 7];
-// const legalMoves4 = [3, 8];
-// const legalMoves5 = [1, 6, 9];
-// const legalMoves6 = [2, 5, 7, 10];
-// const legalMoves7 = [3, 6, 8, 11];
-// const legalMoves8 = [4, 7, 12];
-// const legalMoves9 = [5, 10, 13];
-// const legalMoves10 = [6, 9, 11, 14];
-// const legalMoves11 = [7, 10, 12, 15];
-// const legalMoves12 = [8, 11, 16];
-// const legalMoves13 = [9, 14];
-// const legalMoves14 = [10, 13, 15];
-// const legalMoves15 = [11, 14, 16];
-// const legalMoves16 = [12, 15];
