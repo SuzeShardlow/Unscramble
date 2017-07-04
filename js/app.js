@@ -3,7 +3,8 @@ var p1 = p1 || {};
 let gridNumber = Math.floor((Math.random() * 10));
 var chosenGrid;
 var $boardList;
-var $lis = [];
+var userSequence = [];
+var gameSequence = [];
 var $emptyBox;
 var $clickedBox;
 var $newText;
@@ -11,7 +12,7 @@ var $newText;
 $(() => {
   console.log('The DOM is loaded.');
 
-  p1.getGrid = function getGrid() {
+  p1.getGrid = function() {
 
     chosenGrid = grids[gridNumber];
     $boardList = $('ul.gameboard');
@@ -30,7 +31,6 @@ $(() => {
       .attr('id', [i])
       .appendTo($boardList)
       .text(chosenGrid[i]);
-      console.log(li);
     }); // end of .each
   }; // end of populateBoard
   p1.populateBoard();
@@ -39,16 +39,33 @@ $(() => {
   p1.getLis = function getLis() {
     console.log('helloooooooo');
 
-    // $lis = $('.gridbox');
-    console.log('These are the LIs: ' + $('.gridbox'));
+    // array containing all LIs in the game
+    var $lis = $('.gridbox');
 
-
-    // userSequence = [];
-    // for (var k = 0; k < $("li").length; k++ ) {
-    //   console.log('Here are the LIs: ' + $lis[k]);
-    // }
-  };
+    $.each($lis, function(index, element) {
+      const id = parseInt($(element).attr('id'));
+      userSequence.push(id);
+    });
+    console.log('userSequenceArray', userSequence);
+  }; // end of getLis
   p1.getLis();
+
+
+  p1.getNumbers = function getNumbers() {
+    console.log('goodbye');
+    var $lis = $('.gridbox');
+
+    $.each($lis, function(index, element) {
+      var $number = parseInt($(currentvalue).attr('innerHTML'));
+      gameSequence.push(innerHTML);
+      console.log('gameSequenceArray', gameSequence);
+
+    });
+    p1.getNumbers();
+
+    // [1,7].join('') === [1,7].join('')
+
+  };
 
 
   p1.getClick = function getClick() {
@@ -77,6 +94,27 @@ $(() => {
   }; // end of getClick
 
 }); // the last brace and bracket of the DOM loading function
+
+
+p1.checkMatch = function checkMatch() {
+  console.log('Checking for matches.');
+
+  $.each(chosenGrid, function(b) {
+
+    const li = $('<li/>')
+    .addClass('gridbox')
+    .addClass('font-effect-emboss')
+    .attr('id', [i])
+    .appendTo($boardList)
+    .text(chosenGrid[i]);
+    console.log(li);
+  }); // end of .each
+}; // end of populateBoard
+p1.checkMatch();
+
+
+
+
 
 p1.setup = function setup() {
   console.log('The function SETUP is running.');
