@@ -21,8 +21,6 @@ $(() => {
   p1.getGrid();
 
   p1.populateBoard = function populateBoard() {
-    console.log('These are the grids', grids);
-
     $.each(chosenGrid, function(i) {
 
       const li = $('<li/>')
@@ -37,9 +35,6 @@ $(() => {
 
 
   p1.getLis = function getLis() {
-    console.log('helloooooooo');
-
-    // array containing all LIs in the game
     var $lis = $('.gridbox');
 
     $.each($lis, function(index, element) {
@@ -56,8 +51,8 @@ $(() => {
     var $lis = $('.gridbox');
 
     $.each($lis, function(index, element) {
-      var $number = parseInt($(currentvalue).attr('innerHTML'));
-      gameSequence.push(innerHTML);
+      var $number = $(element).text;
+      gameSequence.push($number);
       console.log('gameSequenceArray', gameSequence);
 
     });
@@ -69,7 +64,6 @@ $(() => {
 
 
   p1.getClick = function getClick() {
-    console.log('Now we shall listen for clicks.');
     $emptyBox = chosenGrid.indexOf(null);
     console.log('The blank tile is ' + $emptyBox + '.');
     console.log('The legal moves for this tile are ' + legalMoves[$emptyBox] + '.');
@@ -86,7 +80,14 @@ $(() => {
         if (
           legalMoves[$emptyBox].indexOf($clickedBox) !== -1
         ) {
+          $('gridbox:empty').addClass('gridbox');
+          $('gridbox:empty').addClass('font-effect-emboss');
+          $('gridbox:empty').removeClass(':empty');
+          $('gridbox:empty').text('$clickedbox');
           $(e.currentTarget).text(null);
+          $(e.currentTarget).removeClass('font-effect-emboss');
+          $(e.currentTarget).removeClass('gridbox');
+          $(e.currentTarget).addClass('gridbox:empty');
         }
         console.log(legalMoves[$emptyBox].indexOf($clickedBox));
       }
@@ -121,7 +122,7 @@ p1.setup = function setup() {
   p1.getClick(); // invoking getClick
 }; // end of p1.setup
 
-const solved = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const solved = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null];
 
 const grids = [
   [ 3, 6,  7, 10,  5,  9, 15,  null,  4, 13, 12,  2,  1,  8, 14, 11],
