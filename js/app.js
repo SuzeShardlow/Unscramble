@@ -14,8 +14,8 @@ let gridNumber = Math.floor((Math.random() * 10)); // this chooses one grid numb
 var scrambledGrid; // scrambledGrid is assigned as the actual index (grid) to be picked from the array
 var boardList; //boardList is the name given to the enclosing UL for the LIs
 var $lis = []; // an array to store the LI tags and IDs
-var firstEmptyBox;
-
+var emptyBox;
+var $clickedBox;
 
 $(() => {
   console.log('The DOM is loaded.');
@@ -48,41 +48,47 @@ $(() => {
 }; // end of populateBoard
 p1.populateBoard(); // invoking the function
 
-p1.getFirstEmptyBox = function getFirstEmptyBox() {
-  firstEmptyBox = scrambledGrid.indexOf(null);
-  console.log('The first blank tile is ' + firstEmptyBox);
-  // this works!!!
-  console.log('The legal moves for this tile are ' + legalMoves[firstEmptyBox]);
-}; // end of getFirstBlankTile
-p1.getFirstEmptyBox(); // invoking the function
+
+// p1.getFirstEmptyBox = function getFirstEmptyBox() {
+//   emptyBox = scrambledGrid.indexOf(null);
+//   console.log('The blank tile is ' + emptyBox);
+//   // this works!!!
+//   console.log('The legal moves for this tile are ' + legalMoves[emptyBox]);
+// }; // end of getFirstBlankTile
+// p1.getFirstEmptyBox(); // invoking the function
 
 p1.getClick = function getClick() {
   // a function to listen for clicks
   console.log('Now we shall listen for clicks.');
-  // we only want to be able to move tiles touching the blank one... let's start by changing the colour of them to test the process
+  emptyBox = scrambledGrid.indexOf(null);
+  console.log('The blank tile is ' + emptyBox + '.');
+  console.log('The legal moves for this tile are ' + legalMoves[emptyBox] + '.');
+
+  // we only want to be able to move tiles touching the blank one... let's start by changing the colour of them to test the process --- DONE
+  // now we want to move that number into the vacant space
 
   let $boxes = $('.gridbox'); // these are all the boxes in the grid
 
   console.log($boxes);
 
-  // need to check the clicked box against the list of legalMoves for the empty box
+  $boxes.on('click', (e) => { // when we click, we are checking to see if it is a legal move
 
-  $boxes.on('click', (e) => {
-    var $clickedBox = parseInt(($(e.currentTarget).attr('id')));
+    $clickedBox = parseInt(($(e.currentTarget).attr('id')));
     console.log('This is the box that has been clicked:', $clickedBox);
 
-    for (var j = 0; j < legalMoves[firstEmptyBox].length; j++) {
+    for (var j = 0; j < legalMoves[emptyBox].length; j++) { // seeing if the clicked box is in the legalMoves array for the empty box
       if (
-        legalMoves[firstEmptyBox].indexOf($clickedBox) != -1
+        legalMoves[emptyBox].indexOf($clickedBox) !== -1
       ) {
-        $(e.currentTarget).css('background', '#ff8080');
+        $(e.currentTarget).text(''); // makes the clicked box :empty
+
+
       }
-      console.log(legalMoves[firstEmptyBox].indexOf($clickedBox));
-
+      console.log(legalMoves[emptyBox].indexOf($clickedBox));
     }
-
   }); // end of click event
 }; // end of getClick
+
 
 }); // the last brace and bracket of the DOM loading function
 
@@ -105,7 +111,7 @@ p1.setup = function setup() {
 //   //
 //   // }
 
-
+const solved = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 const grids = [
   [ 3, 6,  7, 10,  5,  9, 15,  null,  4, 13, 12,  2,  1,  8, 14, 11],
