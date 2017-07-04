@@ -2,12 +2,12 @@ var p1 = p1 || {};
 
 let gridNumber = Math.floor((Math.random() * 10));
 var chosenGrid;
-var $boardList;
+var boardList;
 var userSequence = [];
 var gameSequence = [];
-var $emptyBox;
-var $clickedBox;
-var $newText;
+var emptyBox;
+var clickedBox;
+var newText;
 
 $(() => {
   console.log('The DOM is loaded.');
@@ -15,7 +15,7 @@ $(() => {
   p1.getGrid = function() {
 
     chosenGrid = grids[gridNumber];
-    $boardList = $('ul.gameboard');
+    boardList = $('ul.gameboard');
     console.log('This is the grid we will use: ', 'number ' + gridNumber, chosenGrid);
   }; // end of getGrid
   p1.getGrid();
@@ -27,7 +27,7 @@ $(() => {
       .addClass('gridbox')
       .addClass('font-effect-emboss')
       .attr('id', [i])
-      .appendTo($boardList)
+      .appendTo(boardList)
       .text(chosenGrid[i]);
     }); // end of .each
   }; // end of populateBoard
@@ -35,9 +35,9 @@ $(() => {
 
 
   p1.getLis = function getLis() {
-    var $lis = $('.gridbox');
+    var lis = $('.gridbox');
 
-    $.each($lis, function(index, element) {
+    $.each(lis, function(index, element) {
       const id = parseInt($(element).attr('id'));
       userSequence.push(id);
     });
@@ -48,11 +48,11 @@ $(() => {
 
   p1.getNumbers = function getNumbers() {
     console.log('goodbye');
-    var $lis = $('.gridbox');
+    var lis = $('.gridbox');
 
-    $.each($lis, function(index, element) {
-      var $number = $(element).text;
-      gameSequence.push($number);
+    $.each(lis, function(index, element) {
+      var number = $(element).text;
+      gameSequence.push(number);
       console.log('gameSequenceArray', gameSequence);
 
     });
@@ -64,25 +64,26 @@ $(() => {
 
 
   p1.getClick = function getClick() {
-    $emptyBox = chosenGrid.indexOf(null);
-    console.log('The blank tile is ' + $emptyBox + '.');
-    console.log('The legal moves for this tile are ' + legalMoves[$emptyBox] + '.');
+    emptyBox = chosenGrid.indexOf(null);
+    var blankTile = emptyBox + 1;
+    console.log('The blank tile is ' + emptyBox + '.');
+    console.log('The legal moves for this tile are ' + legalMoves[emptyBox] + '.');
 
-    let $boxes = $('.gridbox');
-    console.log($boxes);
+    let boxes = $('.gridbox');
+//    console.log(boxes);
 
-    $boxes.on('click', (e) => {
+    boxes.on('click', (e) => {
 
-      $clickedBox = parseInt(($(e.currentTarget).attr('id')));
-      console.log('This is the box that has been clicked:', $clickedBox);
+      clickedBox = parseInt(($(e.currentTarget).attr('id')));
+      console.log('This is the box that has been clicked:', clickedBox);
 
-      for (var j = 0; j < legalMoves[$emptyBox].length; j++) {
+      for (var j = 0; j < legalMoves[emptyBox].length; j++) {
         if (
-          legalMoves[$emptyBox].indexOf($clickedBox) !== -1
+          legalMoves[emptyBox].indexOf(clickedBox) !== -1
         ) {
+          $('ul li:nth-child(' + blankTile + ')').text(clickedBox);
           $(e.currentTarget).text(null);
           // $('gridbox:empty').removeClass(':empty');
-          $('ul li:nth-child(2)').text('hi');
           // $('gridbox:empty').addClass('gridbox');
           // $('gridbox:empty').addClass('font-effect-emboss');
           // $(e.currentTarget).removeClass('font-effect-emboss');
@@ -90,7 +91,7 @@ $(() => {
           // $('gridbox:empty').text('$clickedbox');
           // $(e.currentTarget).addClass('gridbox:empty');
         }
-        console.log(legalMoves[$emptyBox].indexOf($clickedBox));
+        console.log(legalMoves[emptyBox].indexOf(clickedBox));
       }
     }); // end of click event
   }; // end of getClick
@@ -107,7 +108,7 @@ p1.checkMatch = function checkMatch() {
     .addClass('gridbox')
     .addClass('font-effect-emboss')
     .attr('id', [i])
-    .appendTo($boardList)
+    .appendTo(boardList)
     .text(chosenGrid[i]);
     console.log(li);
   }); // end of .each
