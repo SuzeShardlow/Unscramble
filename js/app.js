@@ -80,14 +80,15 @@ $(() => {
         if (
           legalMoves[$emptyBox].indexOf($clickedBox) !== -1
         ) {
-          $('gridbox:empty').addClass('gridbox');
-          $('gridbox:empty').addClass('font-effect-emboss');
-          $('gridbox:empty').removeClass(':empty');
-          $('gridbox:empty').text('$clickedbox');
           $(e.currentTarget).text(null);
-          $(e.currentTarget).removeClass('font-effect-emboss');
-          $(e.currentTarget).removeClass('gridbox');
-          $(e.currentTarget).addClass('gridbox:empty');
+          // $('gridbox:empty').removeClass(':empty');
+          $('ul li:nth-child(2)').text('hi');
+          // $('gridbox:empty').addClass('gridbox');
+          // $('gridbox:empty').addClass('font-effect-emboss');
+          // $(e.currentTarget).removeClass('font-effect-emboss');
+          // $(e.currentTarget).removeClass('gridbox');
+          // $('gridbox:empty').text('$clickedbox');
+          // $(e.currentTarget).addClass('gridbox:empty');
         }
         console.log(legalMoves[$emptyBox].indexOf($clickedBox));
       }

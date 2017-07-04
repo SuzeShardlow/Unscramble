@@ -59,8 +59,12 @@ footer {
 }
 
 .gridbox:empty {
-  border-color: #CBD1DA;
-  background: #CBD1DA
+  border: none;
+  background: #CBD1DA;
+  float: left;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px
 }
 
 
