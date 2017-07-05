@@ -27,6 +27,7 @@ body {
 
 button {
   display: flex;
+  width: 170px;
   margin: 0 auto;
   border-radius: 5px;
   border: 5px solid #12EAEA;
@@ -39,7 +40,7 @@ button {
 
 .clicks {
   font-family: 'Lobster', cursive;
-  font-size: 18px;
+  font-size: 18px
 }
 
 footer {
