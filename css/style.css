@@ -15,6 +15,7 @@ aside {
   /*margin-left: 2%;*/
   background: #EFD3D7;
   padding: 10px;
+  border: 3px solid #D5C7D1;
   border-radius: 10px
 }
 
@@ -40,7 +41,7 @@ button {
 
 .clicks {
   font-family: 'Lobster', cursive;
-  font-size: 18px
+  font-size: 18px;
 }
 
 footer {

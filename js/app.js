@@ -15,6 +15,7 @@ $(() => {
 
   p1.getGrid = function() {
     chosenGrid = grids[gridNumber];
+    console.log(gridNumber);
     boardList = $('ul.gameboard');
   }; // end of getGrid
   p1.getGrid();
@@ -36,14 +37,14 @@ $(() => {
   p1.populateBoard();
 
   p1.timer = function() {
-    var time = 119;
+    var time = 60;
     onTimer();
     function onTimer() {
       $('button').off('click');
       $('.timer').text(time);
       time--;
       if (time < 0) {
-        alert('Time\'s up!');
+        confirm('Time\'s up!  Play again?');
       } else {
         setTimeout(onTimer, 1000);
       }
@@ -80,8 +81,6 @@ $(() => {
           gameSequence.push(n.innerText);
         }
         let userWon = true;
-        let modal = $('.modal');
-        let span = $('.close');
         for (let b = 0; b < solved.length; b++) {
           let currentTile = $('#' + b);
           if (solved[b] !== gameSequence[b]) {
@@ -97,17 +96,22 @@ $(() => {
           }
         }
         if (userWon) {
-          alert('You won!');
+          setTimeout(function () {
+            confirm('You won!  Play again?');
+          }, 100);
         }
       } else {
-        console.log('Game almost complete!');
+        $(e.currentTarget).addClass('animated shake');
+        setTimeout(function () {
+          $(e.currentTarget).removeClass('animated shake');
+        }, 1000);
       }
     }); // end of click event
   }; // end of getClick
 }); // the last brace and bracket of the DOM loading function
 
 p1.setup = function setup() {
-  p1.getClick(); // invoking getClick
+  p1.getClick();
   $('button').on('click', p1.timer);
 }; // end of p1.setup
 
@@ -119,7 +123,7 @@ const grids = [
   [ '', 8,  7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
   [ 5, 6, 10,  1,  3,  '', 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
   [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15,  '', 14, 12, 11,  6],
-  [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14,  ''],
+  [ 9, 3,  8,  2,  1,  6, 10,  7, 11, 5, 13,  4, 15, 12, 14, ''],
   [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  '',  9,  4, 13, 12, 11],
   [ 9, 1,  4,  7,  6, 14,  3,  '',  8, 10,  2,  5, 11, 13, 15, 12],
   [14, 6,  '', 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
