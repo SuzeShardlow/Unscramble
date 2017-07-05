@@ -13,15 +13,21 @@ aside {
   line-height: 1.5;
   max-width: 40%;
   margin-left: 2%;
-  background: #EFD3D7
+  background: #EFD3D7;
+  padding: 10px;
+  border-radius: 10px
 }
 
 
 body {
   /*max-width: 400px;*/
-  background: #BCF4F5
+  /*background: #BCF4F5*/
+  background: #F6F1ED
 }
 
+.gridbox.correct {
+  background: #D9F2B4;
+}
 
 footer {
   clear: both;
@@ -29,13 +35,14 @@ footer {
   /*display: block;*/
   margin: 50px auto;
   font-family: 'Raleway', sans-serif;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   text-align: center;
   font-weight: bold;
   line-height: 2;
   /*position: relative;*/
   /*bottom: 0;*/
-  background: #FFB7C3
+  background: #FFB7C3;
+  border-radius: 5px
 }
 
 
@@ -48,7 +55,7 @@ footer {
   /*margin: -1px;*/
   border: 1px solid #fafafa;
   border-radius: 10px;
-  background: #FCE8FD;
+  background: #E8759B;
   /*background: #D9F2B4;*/
   font-family: 'Roboto', sans-serif;
   color: white;
@@ -61,10 +68,6 @@ footer {
 .gridbox:empty {
   border: none;
   background: #CBD1DA;
-  float: left;
-  height: 100px;
-  width: 100px;
-  border-radius: 10px
 }
 
 
@@ -72,10 +75,16 @@ h1 {
   font-family: 'Lobster', cursive;
   font-size: 100px;
   line-height: 150px;
-  color: white;
+  color: #12EAEA;
   text-align: center
 }
 
+h2 {
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  font-weight: bold;
+
+}
 
 .leftside {
   /*position: relative;*/
@@ -90,6 +99,10 @@ main {
   max-width: 800px;
   margin: 30px auto;
   overflow: auto
+}
+
+p {
+  padding: 5px
 }
 
 

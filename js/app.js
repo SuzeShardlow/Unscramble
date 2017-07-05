@@ -1,24 +1,24 @@
 var p1 = p1 || {};
 
-let gridNumber = Math.floor((Math.random() * 10));
-var chosenGrid;
 var boardList;
-var userSequence = [];
-var gameSequence = [];
-var clickedBox;
-var newText;
+var chosenGrid;
 var clickCount = 0;
-const solved = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null];
+var clickedBox;
+let gridNumber = Math.floor((Math.random() * 10));
+var newText;
+var userSequence = [];
+
+const solved = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', ''];
 
 
 $(() => {
-  console.log('The DOM is loaded.');
+
   p1.getGrid = function() {
     chosenGrid = grids[gridNumber];
     boardList = $('ul.gameboard');
-    console.log('This is the grid we will use: ', 'number ' + gridNumber, chosenGrid);
   }; // end of getGrid
   p1.getGrid();
+
 
   p1.populateBoard = function populateBoard() {
     $.each(chosenGrid, function(i) {
@@ -28,108 +28,78 @@ $(() => {
       .attr('id', [i])
       .appendTo(boardList)
       .text(chosenGrid[i]);
+      if ((i + 1) === chosenGrid[i]) {
+        li.addClass('correct');
+      }
     }); // end of .each
   }; // end of populateBoard
   p1.populateBoard();
 
-  p1.getLis = function getLis() {
-    var lis = $('.gridbox');
-    $.each(lis, function(index, element) {
-      const id = parseInt($(element).attr('id'));
-      userSequence.push(id);
-
-    });
-    console.log('userSequenceArray', userSequence);
-  }; // end of getLis
-  p1.getLis();
-
-  p1.getNumbers = function getNumbers() {
-    console.log('goodbye');
-    var lis = $('.gridbox');
-    $.each(lis, function(index, element) {
-      var number = $(element).text;
-      gameSequence.push(number);
-      console.log('gameSequenceArray', gameSequence);
-    });
-    p1.getNumbers();
-
-    // [1,7].join('') === [1,7].join('')
-
-  };
 
   p1.getClick = function getClick() {
-
     let boxes = $('.gridbox');
 
     boxes.on('click', (e) => {
-      console.log('Number of moves is: ',clickCount);
+
       clickedBox = parseInt(($(e.currentTarget).attr('id')));
+
       let blankBoxId = $('.gridbox:empty').attr('id');
 
-      console.log('This is the box that has been clicked:', clickedBox);
-      console.log('This is the empty box: ', blankBoxId);
-      console.log('The legal moves for this tile are ', legalMoves[blankBoxId], '.');
-
-
       if (legalMoves[blankBoxId].includes(clickedBox)) {
-        console.log('That was a legal move.');
         clickCount++;
-        console.log('Number of moves is: ',clickCount);
 
+        console.log('Number of moves is: ',clickCount);
         $('.gridbox:empty').addClass('font-effect-emboss');
         $('.gridbox:empty').text(e.currentTarget.innerText);
-        // swap the text around
         $(e.currentTarget).removeClass('font-effect-emboss');
         $(e.currentTarget).text(null);
-
+        let gameSequence = [];
         for (let n of $('.gridbox')) {
           gameSequence.push(n.innerText);
         }
-
-        if (gameSequence === solved) {
+        let userWon = true;
+        for (let b = 0; b < solved.length; b++) {
+          let currentTile = $('#' + b);
+          if (solved[b] !== gameSequence[b]) {
+            userWon = false;
+            currentTile.removeClass('correct');
+          } else {
+            if (currentTile.text() !== '') {
+              if (! currentTile.hasClass('correct')) {
+                currentTile.addClass('correct');
+              }
+            }
+          }
+        }
+        if (userWon) {
           alert('You won!');
         }
-
       } else {
-        console.log('That was an illegal move.');
+        console.log('Game almost complete!');
       }
     }); // end of click event
   }; // end of getClick
 }); // the last brace and bracket of the DOM loading function
 
-// p1.checkMatch = function checkMatch() {
-//   console.log('Checking for matches.');
-//   $.each(chosenGrid, function(b) {
-//     const li = $('<li/>')
-//     .addClass('gridbox')
-//     .addClass('font-effect-emboss')
-//     .attr('id', [i])
-//     .appendTo(boardList)
-//     .text(chosenGrid[i]);
-//     console.log(li);
-//   }); // end of .each
-// }; // end of populateBoard
-// p1.checkMatch();
-
 p1.setup = function setup() {
-  console.log('The function SETUP is running.');
   p1.getClick(); // invoking getClick
 }; // end of p1.setup
 
 const grids = [
-  [ 3, 6,  7, 10,  5,  9, 15,  null,  4, 13, 12,  2,  1,  8, 14, 11],
-  [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  null,  2,  1, 13],
-  [ 2, 6, 11,  3,  null, 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
-  [ null, 8,  7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
-  [ 5, 6, 10,  1,  3,  null, 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
-  [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15,  null, 14, 12, 11,  6],
-  [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14,  null],
-  [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  null,  9,  4, 13, 12, 11],
-  [ 9, 1,  4,  7,  6, 14,  3,  null,  8, 10,  2,  5, 11, 13, 15, 12],
-  [14, 6,  null, 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
+  [ 3, 6,  7, 10,  5,  9, 15,  '',  4, 13, 12,  2,  1,  8, 14, 11],
+  [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  '',  2,  1, 13],
+  [ 2, 6, 11,  3,  '', 13,  9,  5,  4, 14, 15,  8, 12, 10,  7,  1],
+  [ '', 8,  7,  2,  5, 12, 14,  1, 11, 10,  6, 13,  3,  9, 15,  4],
+  [ 5, 6, 10,  1,  3,  '', 15,  8, 14,  2, 13, 11,  4,  9,  7, 12],
+  [ 1, 5,  4,  8,  3,  7,  9,  2, 10, 13, 15,  '', 14, 12, 11,  6],
+  [ 9, 3,  8,  2,  1,  6, 10, 11,  7,  5, 13,  4, 15, 12, 14,  ''],
+  [ 2, 8,  5,  1,  6, 14,  7,  3, 15, 10,  '',  9,  4, 13, 12, 11],
+  [ 9, 1,  4,  7,  6, 14,  3,  '',  8, 10,  2,  5, 11, 13, 15, 12],
+  [14, 6,  '', 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
 ];
+
 const legalMoves = [
-  [1, 4], // box 0 ie the first one
+  [1, 4],
   [0, 2, 5],
   [1, 3, 6],
   [2, 7],
@@ -146,4 +116,5 @@ const legalMoves = [
   [10, 13, 15],
   [11, 14]
 ];
+
 $(p1.setup.bind(p1)); // function to sort any THIS issues
