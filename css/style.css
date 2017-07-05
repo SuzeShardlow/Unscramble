@@ -12,7 +12,7 @@ aside {
   font-size: 14px;
   line-height: 1.5;
   max-width: 40%;
-  margin-left: 2%;
+  /*margin-left: 2%;*/
   background: #EFD3D7;
   padding: 10px;
   border-radius: 10px
@@ -25,8 +25,21 @@ body {
   background: #F6F1ED
 }
 
-.gridbox.correct {
-  background: #D9F2B4;
+button {
+  display: flex;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 5px solid #12EAEA;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background: #B2F7EF;
+  padding: 10px
+}
+
+.clicks {
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
 }
 
 footer {
@@ -63,6 +76,10 @@ footer {
   font-weight: bold;
   text-align: center;
   padding: 15px 0 0 0
+}
+
+.gridbox.correct {
+  background: #D9F2B4;
 }
 
 .gridbox:empty {
@@ -104,7 +121,6 @@ main {
 p {
   padding: 5px
 }
-
 
 ul {
   /*the LIs are 100px each with a margin of -3px so some maths is required*/
