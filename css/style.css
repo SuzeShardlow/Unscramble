@@ -65,6 +65,22 @@ button.modal {
   font-size: 18px;
 }
 
+.countdown {
+  display: flex;
+  width: 240px;
+  height: 75px;
+  margin: 5px auto 2px;
+  border-radius: 5px;
+  border: 5px solid #93F5F5;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background: #B2F7EF;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+
 footer {
   clear: both;
   max-width: 500px;
@@ -218,22 +234,6 @@ p#modaltext {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   font-size: 50
-}
-
-.timer {
-  display: flex;
-  width: 240px;
-  height: 75px;
-  margin: 5px auto 2px;
-  border-radius: 5px;
-  border: 5px solid #93F5F5;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  background: #B2F7EF;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
 }
 
 ul {

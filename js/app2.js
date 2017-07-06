@@ -81,6 +81,7 @@ p1.gameChoice = function gameChoice() {
   choice.on('click', (e) => {
     if (clock) {
       clearTimeout(clock);
+      p1.stopCountdown();
     }
     clickCount = 0;
     $('#clicks').text('Number of moves played: ' + clickCount);
@@ -125,10 +126,10 @@ p1.populateBoard = function populateBoard() {
 }; // end of populateBoard
 
 
-p1.timer = function timer() {
+p1.countDown = function countDown() {
   time = 120;
-  onTimer();
-  function onTimer() {
+  onCountDown();
+  function onCountDown() {
     $('.timer').text('Seconds remaining: ' + time);
     time--;
     if (time < 0) {
@@ -136,7 +137,7 @@ p1.timer = function timer() {
       $('#modaltext').html('Time\'s up!  Want to play again?');
       $('#modaldialogue').show();
     } else {
-      clock = setTimeout(onTimer, 1000);
+      clock = setTimeout(onCountDown, 1000);
     }
   }
 };
@@ -152,7 +153,7 @@ p1.getClick = function getClick() {
       $('#clicks').text('Number of moves played: ' + clickCount);
 
       if (clickCount === 1) {
-        p1.timer();
+        p1.countDown();
       }
       p1.moveTile = function moveTile() {
         $('.gridbox:empty').addClass('font-effect-emboss');
@@ -183,6 +184,7 @@ p1.getClick = function getClick() {
       if (userWon) {
         if (clock) {
           clearTimeout(clock);
+          p1.stopCountdown();
         }
         $('#modalmask').show();
         $('#modaltext').text('You won in ' + clickCount + ' moves and ' + time + ' seconds!  Want to play again?');
@@ -197,10 +199,15 @@ p1.getClick = function getClick() {
   }); // end of click event
 }; // end of getClick
 
+
+p1.stopCountdown = function stopCountdown() {
+  $('.countdown').text('COUNTDOWN...');
+};
+
+
 p1.setup = function setup() {
   p1.gameChoice();
   p1.getClick();
-  // $('#timerbutton').on('click', p1.timer);
   $('#modalyes').on('click', function() {
     location.reload();
   });
