@@ -1,7 +1,6 @@
 var p1 = p1 || {};
 let activeArrayIndex;
 let boardList;
-let choice;
 let chosenGrid;
 let clickCount = 0;
 let clickedBox;
@@ -80,7 +79,7 @@ const legalMoves = [
 
 $(() => {
   p1.gameChoice = function gameChoice() {
-    choice = $('.mode');
+    let choice = $('.mode');
     choice.on('click', (e) => {
       clickCount = 0;
       $('#clicks').text('Number of moves played: ' + clickCount);
