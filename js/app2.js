@@ -80,7 +80,6 @@ p1.gameChoice = function gameChoice() {
   let choice = $('.mode');
   choice.on('click', (e) => {
     if (clock) {
-      clearTimeout(clock);
       p1.stopCountdown();
     }
     clickCount = 0;
@@ -183,7 +182,6 @@ p1.getClick = function getClick() {
 
       if (userWon) {
         if (clock) {
-          clearTimeout(clock);
           p1.stopCountdown();
         }
         $('#modalmask').show();
@@ -201,13 +199,13 @@ p1.getClick = function getClick() {
 
 
 p1.stopCountdown = function stopCountdown() {
+  clearTimeout(clock);
   $('.countdown').text('COUNTDOWN...');
 };
 
 
 p1.setup = function setup() {
   p1.gameChoice();
-  p1.getClick();
   $('#modalyes').on('click', function() {
     location.reload();
   });
@@ -216,6 +214,7 @@ p1.setup = function setup() {
     $('#modalmask').hide();
   });
 }; // end of p1.setup
+
 
 $(() => {
   p1.setup();
