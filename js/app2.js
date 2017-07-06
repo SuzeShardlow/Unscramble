@@ -121,7 +121,7 @@ p1.populateBoard = function populateBoard() {
 }; // end of populateBoard
 
 
-p1.timer = function() {
+p1.timer = function timer() {
   time = 120;
   onTimer();
   function onTimer() {
@@ -190,10 +190,6 @@ p1.getClick = function getClick() {
   }); // end of click event
 }; // end of getClick
 
-$(() => {
-  p1.setup();
-}); // the last brace and bracket of the DOM loading function
-
 p1.setup = function setup() {
   p1.gameChoice();
   p1.getClick();
@@ -206,3 +202,7 @@ p1.setup = function setup() {
     $('#modalmask').hide();
   });
 }; // end of p1.setup
+
+$(() => {
+  p1.setup();
+});
