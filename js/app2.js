@@ -79,6 +79,9 @@ const legalMoves = [
 p1.gameChoice = function gameChoice() {
   let choice = $('.mode');
   choice.on('click', (e) => {
+    if (clock) {
+      clearTimeout(clock);
+    }
     clickCount = 0;
     $('#clicks').text('Number of moves played: ' + clickCount);
     choice.removeClass('active');
@@ -133,7 +136,7 @@ p1.timer = function timer() {
       $('#modaltext').html('Time\'s up!  Want to play again?');
       $('#modaldialogue').show();
     } else {
-      setTimeout(onTimer, 1000);
+      clock = setTimeout(onTimer, 1000);
     }
   }
 };
@@ -178,6 +181,9 @@ p1.getClick = function getClick() {
       }
 
       if (userWon) {
+        if (clock) {
+          clearTimeout(clock);
+        }
         $('#modalmask').show();
         $('#modaltext').text('You won in ' + clickCount + ' moves and ' + time + ' seconds!  Want to play again?');
         $('#modaldialogue').show();
