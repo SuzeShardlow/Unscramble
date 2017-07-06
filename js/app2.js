@@ -127,7 +127,7 @@ p1.countDown = function countDown() {
   time = 120;
   onCountDown();
   function onCountDown() {
-    $('.timer').text('Seconds remaining: ' + time);
+    $('#countdown').text('Seconds remaining: ' + time);
     time--;
     if (time < 0) {
       $('#modalmask').show();
@@ -198,7 +198,7 @@ p1.stopCountdown = function stopCountdown() {
   if (clock) {
     clearTimeout(clock);
   }
-  $('.countdown').text('COUNTDOWN...');
+  $('#countdown').text('COUNTDOWN...');
 };
 
 
