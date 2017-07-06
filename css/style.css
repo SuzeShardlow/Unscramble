@@ -3,6 +3,9 @@
 }
 /*this means that the margins and borders are included in the height and width measurements of the boxes*/
 
+a {
+  color: inherit
+}
 
 aside {
   float: right;
@@ -29,14 +32,23 @@ body {
 button {
   display: flex;
   width: 170px;
-  margin: 0 auto;
+  height: 50px;
+  margin: 5px auto;
   border-radius: 5px;
   border: 5px solid #12EAEA;
   font-family: 'Orbitron', sans-serif;
   font-size: 16px;
   font-weight: bold;
   background: #B2F7EF;
+  text-align: center;
+  vertical-align: middle;
   padding: 10px
+}
+
+button.modal {
+  text-align: center;
+  width: 80px;
+  height: 50px;
 }
 
 .clicks {
@@ -46,20 +58,20 @@ button {
 
 footer {
   clear: both;
-  max-width: 700px;
+  max-width: 500px;
   /*display: block;*/
   margin: 50px auto;
   font-family: 'Raleway', sans-serif;
   /*text-transform: uppercase;*/
-  text-align: center;
+  /*text-align: center;*/
   font-weight: bold;
   line-height: 2;
   /*position: relative;*/
   /*bottom: 0;*/
   background: #FFB7C3;
-  border-radius: 5px
+  border-radius: 5px;
+  padding: 5px 10px 5px 15px
 }
-
 
 .gridbox {
   /*change the margin here to get rid of thick black lines inbetween*/
@@ -89,7 +101,6 @@ footer {
   background: #CBD1DA;
 }
 
-
 h1 {
   font-family: 'Lobster', cursive;
   font-size: 100px;
@@ -105,6 +116,13 @@ h2 {
 
 }
 
+i {
+  /*display: inline;*/
+  vertical-align: middle;
+  float: right;
+  padding: 0 5px 0
+}
+
 .leftside {
   /*position: relative;*/
   float: left;
@@ -113,19 +131,53 @@ h2 {
   margin: 0 auto
 }
 
-
 main {
   max-width: 800px;
   margin: 30px auto;
   overflow: auto
 }
 
+.modaldialogue {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  height: 200px;
+  width: 500px;
+  margin: -100px 0 0 -150px;
+  border-radius: 5px;
+  border: 5px solid #97F9F9;
+  /*border-color: #97F9F9;
+  border-style: solid;*/
+  background-color: #E2FDFD;
+  z-index: 21;
+  display: none;
+}
+
+.modalmask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  opacity: 0.2;
+  z-index: 20;
+  display: none;
+}
+
 p {
   padding: 5px
 }
 
+p#modaltext {
+  padding: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 50
+}
+
 ul {
-  /*the LIs are 100px each with a margin of -3px so some maths is required*/
+  /*the LIs were 100px each with a margin of -3px so some maths was required*/
   /*originally 428px wide*/
   float: left;
   background: #CBD1DA;
@@ -136,4 +188,46 @@ ul {
   border-bottom: 20px solid #8E9AAF;
   border-left: 20px solid #8E9AAF;
   border-radius: 15px
+}
+
+
+
+@media only screen and (max-width: 875px) {
+  h1 {
+    font-size: 70px;
+    line-height: 150px;
+    color: #12EAEA;
+    text-align: center
+  }
+
+  main {
+    width: auto;
+    margin: 0 auto;
+
+  }
+
+  aside {
+    /*float: none;*/
+    display: inline-block;
+    margin: 20 auto;
+    max-width: 45%;
+    padding: 0 10px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px
+  }
+
+  /*footer ul li:last-of-type {
+  clear: both;
+  float: none;
+  display: block;
+  }*/
+
+
+  ul {
+
+  }
+
 }
