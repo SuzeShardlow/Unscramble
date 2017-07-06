@@ -1,59 +1,98 @@
 var p1 = p1 || {};
+var activeArrayIndex;
 var boardList;
+var choice;
 var chosenGrid;
 var clickCount = 0;
 var clickedBox;
 var clock;
 let gridNumber = Math.floor((Math.random() * 10));
+var gridSet;
 var newText;
 var userSequence = [];
 var time;
 
-const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', ''];
 
-const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', ''];
-
-// add another for letters game
-// click button - selectedGame - pass into all the functions to reference that array when doing the comparison
-// create LIs after selecting the game to be played
-// hide menu when the game starts
-// shake board if they don't select modal
+const letterNumbers = {
+  0: ['A', '1'],
+  1: ['B', '2'],
+  2: ['C', '3'],
+  3: ['D', '4'],
+  4: ['E', '5'],
+  5: ['F', '6'],
+  6: ['G', '7'],
+  7: ['H', '8'],
+  8: ['I', '9'],
+  9: ['J', '10'],
+  10: ['K', '11'],
+  11: ['L', '12'],
+  12: ['M', '13'],
+  13: ['N', '14'],
+  14: ['O', '15'],
+  15: ['', '']
+};
 
 
 $(() => {
-  p1.getGrid = function() {
-    chosenGrid = grids[gridNumber];
-    console.log(gridNumber);
+  p1.gameChoice = function gameChoice() {
+    choice = $('.mode');
+    choice.on('click', (e) => {
+      clickCount = 0;
+      $('#clicks').text('Number of moves played: ' + clickCount);
+      choice.removeClass('active');
+      $(e.currentTarget).addClass('active');
+      gridSet = ($(e.currentTarget).attr('id'));
+      gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
+      p1.getGrid();
+    });
+  };
+
+  p1.getGrid = function getGrid() {
+    gridSet === 'number' ? chosenGrid = numberGrids[gridNumber]:chosenGrid = letterGrids[gridNumber];
     boardList = $('ul.gameboard');
+    p1.populateBoard();
   }; // end of getGrid
-  p1.getGrid();
 
 
   p1.populateBoard = function populateBoard() {
+    boardList.empty();
     $.each(chosenGrid, function(i) {
+      console.log('reached');
       const li = $('<li/>')
       .addClass('gridbox')
       .addClass('font-effect-emboss')
-      .attr('id', [i])
       .appendTo(boardList)
+      .attr('id', i)
       .text(chosenGrid[i]);
-      if ((i + 1) === chosenGrid[i]) {
-        li.addClass('correct');
+
+      // winner winner (numbers)
+
+      if (activeArrayIndex === 1) {
+        if ((i + 1) === chosenGrid[i]){
+          console.log(li.id);
+          console.log(chosenGrid[i]);
+          li.addClass('correct');
+        }
+      } else {
+        if(letterNumbers[i][activeArrayIndex] === chosenGrid[i]) {
+          li.addClass('correct');
+        }
       }
     }); // end of .each
+    p1.getClick();
   }; // end of populateBoard
-  p1.populateBoard();
 
 
   p1.timer = function() {
     time = 120;
     onTimer();
     function onTimer() {
-      $('.timer').text(time + ' seconds remaining');
+      $('.timer').text('Seconds remaining: ' + time);
+      // $('.timer').text('Seconds remaining: ' + time + '\nMoves played: ' + clickCount);
       time--;
       if (time < 0) {
         $('#modalmask').show();
-        $('#modaltext').text('Time\'s up!  Want to play again?');
+        $('#modaltext').html('Time\'s up!  Want to play again?');
         $('#modaldialogue').show();
       } else {
         setTimeout(onTimer, 1000);
@@ -69,31 +108,31 @@ $(() => {
       let blankBoxId = $('.gridbox:empty').attr('id');
       if (legalMoves[blankBoxId].includes(clickedBox)) {
         clickCount++;
+        $('#clicks').text('Number of moves played: ' + clickCount);
+
         if (clickCount === 1) {
           p1.timer();
         }
-        $('#clicks').text('Number of moves played: ' + clickCount);
         p1.moveTile = function moveTile() {
-          console.log('Number of moves played: ',clickCount);
           $('.gridbox:empty').addClass('font-effect-emboss');
           $('.gridbox:empty').text(e.currentTarget.innerText);
           $(e.currentTarget).removeClass('font-effect-emboss');
           $(e.currentTarget).text(null);
         };
         p1.moveTile();
-        let gameSequence = [];
+        const gameSequence = [];
         for (let n of $('.gridbox')) {
           gameSequence.push(n.innerText);
         }
         let userWon = true;
-        for (let b = 0; b < numbers.length; b++) {
-          let currentTile = $('#' + b);
-          if (numbers[b] !== gameSequence[b]) {
+        for (let b = 0; b < 16; b++) {
+          const currentTile = $('#' + b);
+          if (letterNumbers[b][activeArrayIndex] !== gameSequence[b]) {
             userWon = false;
             currentTile.removeClass('correct');
           } else {
             if (currentTile.text() !== '') {
-              if (! currentTile.hasClass('correct')) {
+              if (!currentTile.hasClass('correct')) {
                 currentTile.addClass('correct');
               }
             }
@@ -116,6 +155,7 @@ $(() => {
 }); // the last brace and bracket of the DOM loading function
 
 p1.setup = function setup() {
+  p1.gameChoice();
   p1.getClick();
   // $('#timerbutton').on('click', p1.timer);
   $('#modalyes').on('click', function() {
@@ -127,7 +167,7 @@ p1.setup = function setup() {
   });
 }; // end of p1.setup
 
-const grids = [
+const numberGrids = [
   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, '', 15],
   [ 3, 6,  7, 10,  5,  9, 15,  '',  4, 13, 12,  2,  1,  8, 14, 11],
   [ 9, 5, 12,  8,  6,  3,  4, 11, 15,  7, 14, 10,  '',  2,  1, 13],
@@ -141,7 +181,19 @@ const grids = [
   [14, 6,  '', 12,  7, 13,  2,  3, 11, 15,  1,  8,  4,  5,  9, 10]
 ];
 
-const letterGrids = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'];
+const letterGrids = [
+  ['C', 'B', 'A', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O'],
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '', 'O']
+];
 
 
 const legalMoves = [

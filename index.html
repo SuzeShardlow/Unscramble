@@ -21,7 +21,15 @@
     <!-- main section consisting of game area and aside but not the footer -->
     <h1>Unscramble!</h1>
 
+
     <section class="leftside">
+
+      <section class="modeselect">
+        <p>Choose your mode:</p>
+        <button type="button" id="number" class="mode">Numbers</button>
+        <button type="button" id="letter" class="mode">Letters</button>
+      </section>
+
       <section class="playarea">
         <section class="modaldialogue" id="modaldialogue">
           <p id="modaltext"></p>
@@ -43,14 +51,16 @@
       <p>Click on a tile to move it.  You can only move a tile if it is touching the empty space.</p>
       <p>Tiles will turn green when they are in the correct positions.</p>
       <p>You have two minutes to complete the game, which will commence when you make your first move.</p>
-      <div class="timer">COUNTDOWN...</div>
-      <p id="clicks"></p>
+      <div><p class="timer">COUNTDOWN...</p>
+        <p id="clicks"></p>
+
+      </div>
     </aside>
   </main>
   <footer class="clearfix">Designed and coded by Suze Shardlow, July 2017
     <a href="https://www.linkedin.com/in/suzeshardlow" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
     <a href="https://github.com/SuzeShardlow" target="_blank"><i class="fa fa-github-alt fa-2x" aria-hidden="true"></i></a>
 
-</footer>
+  </footer>
 </body>
 </html>
