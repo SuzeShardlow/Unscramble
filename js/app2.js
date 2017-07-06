@@ -5,6 +5,7 @@ let boardList;
 let chosenGrid;
 let clickCount = 0;
 let clickedBox;
+let clock;
 const gridNumber = Math.floor((Math.random() * 10));
 let gridSet;
 let time;
