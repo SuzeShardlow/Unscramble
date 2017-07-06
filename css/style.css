@@ -18,6 +18,7 @@ aside {
   /*margin-left: 2%;*/
   background: #EFD3D7;
   font-size: 14px;
+  text-align: center;
   padding: 10px;
   border: 3px solid #D5C7D1;
   border-radius: 10px;
@@ -130,7 +131,7 @@ footer {
 h1 {
   font-family: 'Lobster', cursive;
   font-size: 160px;
-  padding: 25px 0 0 0;
+  padding: 5px 0 0 0;
   /*line-height: 150px;*/
   color: #12EAEA;
   text-align: center
