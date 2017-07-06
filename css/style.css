@@ -3,6 +3,9 @@
 }
 /*this means that the margins and borders are included in the height and width measurements of the boxes*/
 
+/*background position for photo*/
+
+
 a {
   color: inherit
 }
@@ -176,6 +179,22 @@ p#modaltext {
   font-size: 50
 }
 
+.timer {
+  display: flex;
+  width: 200px;
+  height: 50px;
+  margin: 5px auto 3px;
+  border-radius: 5px;
+  border: 5px solid #12EAEA;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background: #B2F7EF;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px
+}
+
 ul {
   /*the LIs were 100px each with a margin of -3px so some maths was required*/
   /*originally 428px wide*/
@@ -192,7 +211,31 @@ ul {
 
 
 
-@media only screen and (max-width: 875px) {
+@media only screen and (max-width: 400px) {
+
+  aside {
+    /*float: left;*/
+    /*display: inline-block;*/
+    margin: 20px;
+    width: auto;
+    min-width: 320px;
+    padding: 0 10px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    margin: 10px auto
+  }
+
+  .gridbox {
+    height: 80px;
+    width: 80px;
+    border: 1px solid #fafafa;
+    font-size: 30px;
+    padding: 15px 0 0 0
+  }
+
   h1 {
     font-size: 70px;
     line-height: 150px;
@@ -206,18 +249,15 @@ ul {
 
   }
 
-  aside {
-    /*float: none;*/
-    display: inline-block;
-    margin: 20 auto;
-    max-width: 45%;
-    padding: 0 10px;
+  .modaldialogue {
+    width: 280px;
   }
 
-  footer {
-    text-align: center;
+
+  p {
     font-size: 12px
   }
+
 
   /*footer ul li:last-of-type {
   clear: both;
@@ -227,7 +267,16 @@ ul {
 
 
   ul {
-
+    /*the LIs were 100px each with a margin of -3px so some maths was required*/
+    /*originally 428px wide*/
+    /*float: left;*/
+    margin: 0 25px 0;
+    background: #CBD1DA;
+    width: 350px;
+    /*height: 418px;*/
+    border-top: 15px solid #8E9AAF;
+    border-right: 15px solid #8E9AAF;
+    border-bottom: 15px solid #8E9AAF;
+    border-left: 15px solid #8E9AAF;
+    border-radius: 15px
   }
-
-}
