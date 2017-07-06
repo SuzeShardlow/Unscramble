@@ -79,17 +79,16 @@ const legalMoves = [
 p1.gameChoice = function gameChoice() {
   let choice = $('.mode');
   choice.on('click', (e) => {
-    if (clock) {
-      p1.stopCountdown();
-    }
-    clickCount = 0;
-    $('#clicks').text('Number of moves played: ' + clickCount);
-    choice.removeClass('active');
-    $(e.currentTarget).addClass('active');
-    gridSet = ($(e.currentTarget).attr('id'));
-    gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
-    p1.getGrid();
-  });
+    p1.stopCountdown();
+  }
+  clickCount = 0;
+  $('#clicks').text('Number of moves played: ' + clickCount);
+  choice.removeClass('active');
+  $(e.currentTarget).addClass('active');
+  gridSet = ($(e.currentTarget).attr('id'));
+  gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
+  p1.getGrid();
+});
 };
 
 p1.getGrid = function getGrid() {
@@ -181,8 +180,7 @@ p1.getClick = function getClick() {
       }
 
       if (userWon) {
-          p1.stopCountdown();
-        }
+        p1.stopCountdown();
         $('#modalmask').show();
         $('#modaltext').text('You won in ' + clickCount + ' moves and ' + time + ' seconds!  Want to play again?');
         $('#modaldialogue').show();
@@ -198,7 +196,9 @@ p1.getClick = function getClick() {
 
 
 p1.stopCountdown = function stopCountdown() {
-  clearTimeout(clock);
+  if (clock) {
+    clearTimeout(clock);
+  }
   $('.countdown').text('COUNTDOWN...');
 };
 
