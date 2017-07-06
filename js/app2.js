@@ -3,9 +3,11 @@ var boardList;
 var chosenGrid;
 var clickCount = 0;
 var clickedBox;
+var clock;
 let gridNumber = Math.floor((Math.random() * 10));
 var newText;
 var userSequence = [];
+var time;
 
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', ''];
 
@@ -44,11 +46,10 @@ $(() => {
 
 
   p1.timer = function() {
-    var time = 60;
+    time = 120;
     onTimer();
     function onTimer() {
-      // $('#timerbutton').off('click');
-      $('#timer').text(time + 's remaining');
+      $('.timer').text(time + ' seconds remaining');
       time--;
       if (time < 0) {
         $('#modalmask').show();
@@ -59,25 +60,6 @@ $(() => {
       }
     }
   };
-
-
-  // p1.timer = function timer() {
-  //   var time = 120;
-  //   // $('#timerbutton').off('click');
-  //   $('#timer').text(time);
-  //   time--;
-  //   if (time < 0) {
-  //     $('#modalmask').show();
-  //     $('#modaltext').text('Time\'s up!  Want to play again?');
-  //     $('#modaldialogue').show();
-  //   } else {
-  //     setTimeout(timer, 1000);
-  //   }
-  // };
-
-  // on first click start the timer
-  // moments.js
-  // do a bit of maths
 
 
   p1.getClick = function getClick() {
@@ -120,7 +102,7 @@ $(() => {
 
         if (userWon) {
           $('#modalmask').show();
-          $('#modaltext').text('You won in ' + clickCount + ' moves!  Want to play again?');
+          $('#modaltext').text('You won in ' + clickCount + ' moves and ' + time + ' seconds!  Want to play again?');
           $('#modaldialogue').show();
         }
       } else {
@@ -135,7 +117,6 @@ $(() => {
 
 p1.setup = function setup() {
   p1.getClick();
-  p1.timer();
   // $('#timerbutton').on('click', p1.timer);
   $('#modalyes').on('click', function() {
     location.reload();
