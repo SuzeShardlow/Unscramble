@@ -181,7 +181,6 @@ p1.getClick = function getClick() {
       }
 
       if (userWon) {
-        if (clock) {
           p1.stopCountdown();
         }
         $('#modalmask').show();
