@@ -80,15 +80,14 @@ p1.gameChoice = function gameChoice() {
   let choice = $('.mode');
   choice.on('click', (e) => {
     p1.stopCountdown();
-  }
-  clickCount = 0;
-  $('#clicks').text('Number of moves played: ' + clickCount);
-  choice.removeClass('active');
-  $(e.currentTarget).addClass('active');
-  gridSet = ($(e.currentTarget).attr('id'));
-  gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
-  p1.getGrid();
-});
+    clickCount = 0;
+    $('#clicks').text('Number of moves played: ' + clickCount);
+    choice.removeClass('active');
+    $(e.currentTarget).addClass('active');
+    gridSet = ($(e.currentTarget).attr('id'));
+    gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
+    p1.getGrid();
+  });
 };
 
 p1.getGrid = function getGrid() {
