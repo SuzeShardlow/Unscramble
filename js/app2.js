@@ -1,15 +1,13 @@
 let p1 = {};
+
 let activeArrayIndex;
 let boardList;
 let chosenGrid;
 let clickCount = 0;
 let clickedBox;
-let clock;
-let gridNumber = Math.floor((Math.random() * 10));
+const gridNumber = Math.floor((Math.random() * 10));
 let gridSet;
-let newText;
 let time;
-let userSequence = [];
 
 const numberGrids = [
   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, '', 15],
@@ -77,125 +75,123 @@ const legalMoves = [
   [11, 14]
 ];
 
-$(() => {
-  p1.gameChoice = function gameChoice() {
-    let choice = $('.mode');
-    choice.on('click', (e) => {
-      clickCount = 0;
-      $('#clicks').text('Number of moves played: ' + clickCount);
-      choice.removeClass('active');
-      $(e.currentTarget).addClass('active');
-      gridSet = ($(e.currentTarget).attr('id'));
-      gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
-      p1.getGrid();
-    });
-  };
+p1.gameChoice = function gameChoice() {
+  let choice = $('.mode');
+  choice.on('click', (e) => {
+    clickCount = 0;
+    $('#clicks').text('Number of moves played: ' + clickCount);
+    choice.removeClass('active');
+    $(e.currentTarget).addClass('active');
+    gridSet = ($(e.currentTarget).attr('id'));
+    gridSet === 'number' ? activeArrayIndex = 1 : activeArrayIndex = 0;
+    p1.getGrid();
+  });
+};
 
-  p1.getGrid = function getGrid() {
-    gridSet === 'number' ? chosenGrid = numberGrids[gridNumber]:chosenGrid = letterGrids[gridNumber];
-    boardList = $('ul.gameboard');
-    p1.populateBoard();
-  }; // end of getGrid
+p1.getGrid = function getGrid() {
+  gridSet === 'number' ? chosenGrid = numberGrids[gridNumber]:chosenGrid = letterGrids[gridNumber];
+  boardList = $('ul.gameboard');
+  p1.populateBoard();
+}; // end of getGrid
 
 
-  p1.populateBoard = function populateBoard() {
-    boardList.empty();
-    $.each(chosenGrid, function(i) {
-      console.log('reached');
-      const li = $('<li/>')
-      .addClass('gridbox')
-      .addClass('font-effect-emboss')
-      .appendTo(boardList)
-      .attr('id', i)
-      .text(chosenGrid[i]);
+p1.populateBoard = function populateBoard() {
+  boardList.empty();
+  $.each(chosenGrid, function(i) {
+    const li = $('<li/>')
+    .addClass('gridbox')
+    .addClass('font-effect-emboss')
+    .appendTo(boardList)
+    .attr('id', i)
+    .text(chosenGrid[i]);
 
-      // winner winner (numbers)
-
-      if (activeArrayIndex === 1) {
-        if ((i + 1) === chosenGrid[i]){
-          console.log(li.id);
-          console.log(chosenGrid[i]);
-          li.addClass('correct');
-        }
-      } else {
-        if(letterNumbers[i][activeArrayIndex] === chosenGrid[i]) {
-          li.addClass('correct');
-        }
+    if (activeArrayIndex === 1) {
+      if ((i + 1) === chosenGrid[i]){
+        console.log(li.id);
+        console.log(chosenGrid[i]);
+        li.addClass('correct');
       }
-    }); // end of .each
-    p1.getClick();
-  }; // end of populateBoard
-
-
-  p1.timer = function() {
-    time = 120;
-    onTimer();
-    function onTimer() {
-      $('.timer').text('Seconds remaining: ' + time);
-      // $('.timer').text('Seconds remaining: ' + time + '\nMoves played: ' + clickCount);
-      time--;
-      if (time < 0) {
-        $('#modalmask').show();
-        $('#modaltext').html('Time\'s up!  Want to play again?');
-        $('#modaldialogue').show();
-      } else {
-        setTimeout(onTimer, 1000);
+    } else {
+      if(letterNumbers[i][activeArrayIndex] === chosenGrid[i]) {
+        li.addClass('correct');
       }
     }
-  };
+  }); // end of .each
+  p1.getClick();
+}; // end of populateBoard
 
 
-  p1.getClick = function getClick() {
-    let boxes = $('.gridbox');
-    boxes.on('click', (e) => {
-      clickedBox = parseInt(($(e.currentTarget).attr('id')));
-      let blankBoxId = $('.gridbox:empty').attr('id');
-      if (legalMoves[blankBoxId].includes(clickedBox)) {
-        clickCount++;
-        $('#clicks').text('Number of moves played: ' + clickCount);
+p1.timer = function() {
+  time = 120;
+  onTimer();
+  function onTimer() {
+    $('.timer').text('Seconds remaining: ' + time);
+    time--;
+    if (time < 0) {
+      $('#modalmask').show();
+      $('#modaltext').html('Time\'s up!  Want to play again?');
+      $('#modaldialogue').show();
+    } else {
+      setTimeout(onTimer, 1000);
+    }
+  }
+};
 
-        if (clickCount === 1) {
-          p1.timer();
-        }
-        p1.moveTile = function moveTile() {
-          $('.gridbox:empty').addClass('font-effect-emboss');
-          $('.gridbox:empty').text(e.currentTarget.innerText);
-          $(e.currentTarget).removeClass('font-effect-emboss');
-          $(e.currentTarget).text(null);
-        };
-        p1.moveTile();
-        const gameSequence = [];
-        for (let n of $('.gridbox')) {
-          gameSequence.push(n.innerText);
-        }
-        let userWon = true;
-        for (let b = 0; b < 16; b++) {
-          const currentTile = $('#' + b);
-          if (letterNumbers[b][activeArrayIndex] !== gameSequence[b]) {
-            userWon = false;
-            currentTile.removeClass('correct');
-          } else {
-            if (currentTile.text() !== '') {
-              if (!currentTile.hasClass('correct')) {
-                currentTile.addClass('correct');
-              }
+
+p1.getClick = function getClick() {
+  let boxes = $('.gridbox');
+  boxes.on('click', (e) => {
+    clickedBox = parseInt(($(e.currentTarget).attr('id')));
+    let blankBoxId = $('.gridbox:empty').attr('id');
+    if (legalMoves[blankBoxId].includes(clickedBox)) {
+      clickCount++;
+      $('#clicks').text('Number of moves played: ' + clickCount);
+
+      if (clickCount === 1) {
+        p1.timer();
+      }
+      p1.moveTile = function moveTile() {
+        $('.gridbox:empty').addClass('font-effect-emboss');
+        $('.gridbox:empty').text(e.currentTarget.innerText);
+        $(e.currentTarget).removeClass('font-effect-emboss');
+        $(e.currentTarget).text(null);
+      };
+      p1.moveTile();
+      const gameSequence = [];
+      for (let n of $('.gridbox')) {
+        gameSequence.push(n.innerText);
+      }
+      let userWon = true;
+      for (let b = 0; b < 16; b++) {
+        const currentTile = $('#' + b);
+        if (letterNumbers[b][activeArrayIndex] !== gameSequence[b]) {
+          userWon = false;
+          currentTile.removeClass('correct');
+        } else {
+          if (currentTile.text() !== '') {
+            if (!currentTile.hasClass('correct')) {
+              currentTile.addClass('correct');
             }
           }
         }
-
-        if (userWon) {
-          $('#modalmask').show();
-          $('#modaltext').text('You won in ' + clickCount + ' moves and ' + time + ' seconds!  Want to play again?');
-          $('#modaldialogue').show();
-        }
-      } else {
-        $(e.currentTarget).addClass('animated shake');
-        setTimeout(function () {
-          $(e.currentTarget).removeClass('animated shake');
-        }, 1000);
       }
-    }); // end of click event
-  }; // end of getClick
+
+      if (userWon) {
+        $('#modalmask').show();
+        $('#modaltext').text('You won in ' + clickCount + ' moves and ' + time + ' seconds!  Want to play again?');
+        $('#modaldialogue').show();
+      }
+    } else {
+      $(e.currentTarget).addClass('animated shake');
+      setTimeout(function () {
+        $(e.currentTarget).removeClass('animated shake');
+      }, 1000);
+    }
+  }); // end of click event
+}; // end of getClick
+
+$(() => {
+  p1.setup();
 }); // the last brace and bracket of the DOM loading function
 
 p1.setup = function setup() {
@@ -210,6 +206,3 @@ p1.setup = function setup() {
     $('#modalmask').hide();
   });
 }; // end of p1.setup
-
-
-$(p1.setup.bind(p1)); // function to sort any THIS issues
