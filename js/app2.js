@@ -1,4 +1,4 @@
-var p1 = p1 || {};
+let p1 = p1 || {};
 let activeArrayIndex;
 let boardList;
 let chosenGrid;
