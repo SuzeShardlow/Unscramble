@@ -1,10 +1,6 @@
 * {
   box-sizing: border-box;
 }
-/*this means that the margins and borders are included in the height and width measurements of the boxes*/
-
-/*background position for photo*/
-
 
 a {
   color: inherit
@@ -12,10 +8,8 @@ a {
 
 aside {
   float: right;
-  /*display: inline;*/
   position: relative;
   max-width: 40%;
-  /*margin-left: 2%;*/
   background: #EFD3D7;
   font-size: 14px;
   text-align: center;
@@ -25,10 +19,7 @@ aside {
   margin-top: 50px
 }
 
-
 body {
-  /*max-width: 400px;*/
-  /*background: #BCF4F5*/
   background: #F6F1ED
 }
 
@@ -68,7 +59,7 @@ button.modal {
 #countdown {
   display: flex;
   width: 240px;
-  height: 75px;
+  height: 50px;
   margin: 5px auto 2px;
   border-radius: 5px;
   border: 5px solid #93F5F5;
@@ -81,27 +72,21 @@ button.modal {
   padding: 10px;
 }
 
-footer {
-  clear: both;
+.footnote {
   max-width: 500px;
-  /*display: block;*/
-  margin: 50px auto;
+  display: block;
+  margin: 10px auto;
   font-family: 'Raleway', sans-serif;
-  /*text-transform: uppercase;*/
-  /*text-align: center;*/
+  text-align: left;
   font-weight: bold;
   line-height: 2;
-  /*position: relative;*/
-  /*bottom: 0;*/
   background: #FFB7C3;
   border-radius: 5px;
   padding: 5px 10px 5px 15px
 }
 
 .gameselect {
-  /*change the margin here to get rid of thick black lines inbetween*/
   float: left;
-  /*display: inline-block;*/
   height: 400px;
   width: 400px;
   border: 1px solid #fafafa;
@@ -117,16 +102,12 @@ footer {
 
 
 .gridbox {
-  /*change the margin here to get rid of thick black lines inbetween*/
   float: left;
-  /*display: inline-block;*/
   height: 100px;
   width: 100px;
-  /*margin: -1px;*/
   border: 1px solid #fafafa;
   border-radius: 10px;
   background: #E8759B;
-  /*background: #D9F2B4;*/
   font-family: 'Roboto', sans-serif;
   color: white;
   font-size: 65px;
@@ -148,7 +129,6 @@ h1 {
   font-family: 'Lobster', cursive;
   font-size: 160px;
   padding: 5px 0 0 0;
-  /*line-height: 150px;*/
   color: #12EAEA;
   text-align: center
 }
@@ -161,17 +141,14 @@ h2 {
 }
 
 i {
-  /*display: inline;*/
   vertical-align: middle;
   float: right;
   padding: 0 5px 0
 }
 
 .leftside {
-  /*position: relative;*/
   float: left;
   max-width: 48%;
-  /*max-width: 450px;*/
   margin: 0 auto
 }
 
@@ -190,8 +167,6 @@ main {
   margin: -100px 0 0 -150px;
   border-radius: 5px;
   border: 5px solid #97F9F9;
-  /*border-color: #97F9F9;
-  border-style: solid;*/
   background-color: #E2FDFD;
   z-index: 21;
   display: none;
@@ -237,15 +212,10 @@ p#modaltext {
 }
 
 ul {
-  /*the LIs were 100px each with a margin of -3px so some maths was required*/
-  /*originally 428px wide*/
   float: left;
   background: #CBD1DA;
   width: 440px;
   height: 440px;
-  border-top: 20px solid #8E9AAF;
-  border-right: 20px solid #8E9AAF;
-  border-bottom: 20px solid #8E9AAF;
-  border-left: 20px solid #8E9AAF;
+  border: 20px solid #8E9AAF;
   border-radius: 15px
 }
