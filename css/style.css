@@ -56,6 +56,11 @@ button.modal {
   font-size: 18px;
 }
 
+i {
+  line-height: 0px !important;
+  margin: 2px;
+}
+
 #countdown {
   display: flex;
   width: 240px;
