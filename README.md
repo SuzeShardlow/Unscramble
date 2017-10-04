@@ -2,7 +2,7 @@
 
 ## Introduction
 
-I am currently attending a 12-week web development bootcamp.  After the first two weeks of classes (which covered HTML, CSS, basic JavaScript, jQuery and object-oriented programming, we were tasked to create a game using JavaScript.
+I am currently attending a 12-week web development bootcamp.  After the first two weeks of classes (which covered HTML, CSS, basic JavaScript, jQuery and object-oriented programming), we were tasked to create a game using JavaScript.
 
 To challenge myself and test my understanding of creating methods and functions and manipulating a DOM, I chose a game which was heavy on logic.
 
