@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project One</title>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Orbitron|Raleway|Roboto:400,500,700&effect=emboss|outline" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="modalmask" id="modalmask"></div>
+  <main>
+    <!-- main section consisting of game area and aside but not the footer -->
+    <h1>Unscramble!</h1>
+
+
+    <section class="leftside">
+
+      <section class="modeselect">
+        <p>Choose your mode:</p>
+        <button type="button" id="number" class="mode">Numbers</button>
+        <button type="button" id="letter" class="mode">Letters</button>
+      </section>
+
+      <section class="playarea">
+        <section class="modaldialogue" id="modaldialogue">
+          <p id="modaltext"></p>
+          <button type="button" class="modal" id="modalyes">Yes</button>
+          <button type="button" class="modal" id="modalno">No</button>
+        </section>
+        <ul class="gameboard">
+        </ul>
+      </section>
+      <!-- end of playarea (game board) section -->
+    </section>
+    <!-- end of left section -->
+
+    <aside>
+      <h2>How To Play</h2>
+      
+      <p>The aim of the game is to rearrange the tiles into numerical order, with the empty space in the bottom right.</p>
+      <p>This game was a popular handheld toy in the days before Nintendo.</p>
+      <p>Click on a tile to move it.  You can only move a tile if it is touching the empty space.</p>
+      <p>Tiles will turn green when they are in the correct positions.</p>
+      <p>You have two minutes to complete the game, which will commence when you make your first move.</p>
+      <div><p id="countdown">COUNTDOWN...</p>
+        <p id="clicks"></p>
+      </div>
+
+      <section class="footnote clearfix">Designed and coded by<br>Suze Shardlow, July 2017
+        <a href="https://www.linkedin.com/in/suzeshardlow" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/SuzeShardlow" target="_blank"><i class="fa fa-github-alt fa-2x" aria-hidden="true"></i></a>
+
+      </section>
+
+
+
+    </aside>
+  </main>
+</body>
+</html>

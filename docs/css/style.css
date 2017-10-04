@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit
+}
+
+aside {
+  float: right;
+  position: relative;
+  max-width: 40%;
+  background: #EFD3D7;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+  border: 3px solid #D5C7D1;
+  border-radius: 10px;
+  margin-top: 48px
+}
+
+body {
+  background: #F6F1ED
+}
+
+button {
+  display: flex;
+  width: 170px;
+  height: 50px;
+  margin: 5px auto;
+  border-radius: 5px;
+  border: 5px solid #93F5F5;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background: #B2F7EF;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  outline: none;
+}
+
+.active {
+  background: black;
+  color: #fff;
+}
+
+button.modal {
+  text-align: center;
+  width: 80px;
+  height: 50px;
+}
+
+.clicks {
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+}
+
+i {
+  line-height: 0px !important;
+  margin: 2px;
+}
+
+#countdown {
+  display: flex;
+  width: 240px;
+  height: 50px;
+  margin: 5px auto 2px;
+  border-radius: 5px;
+  border: 5px solid #93F5F5;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background: #B2F7EF;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.footnote {
+  max-width: 500px;
+  display: block;
+  margin: 10px auto;
+  font-family: 'Raleway', sans-serif;
+  text-align: left;
+  font-weight: bold;
+  line-height: 2;
+  background: #FFB7C3;
+  border-radius: 5px;
+  padding: 5px 10px 5px 15px
+}
+
+.gameselect {
+  float: left;
+  height: 400px;
+  width: 400px;
+  border: 1px solid #fafafa;
+  border-radius: 10px;
+  background: #EEF6FC;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 0 0 0
+}
+
+
+.gridbox {
+  float: left;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #fafafa;
+  border-radius: 10px;
+  background: #E8759B;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 65px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 0 0 0
+}
+
+.gridbox.correct {
+  background: #D9F2B4;
+}
+
+.gridbox:empty {
+  border: none;
+  background: #CBD1DA;
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 160px;
+  padding: 5px 0 0 0;
+  color: #12EAEA;
+  text-align: center
+}
+
+h2 {
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  font-weight: bold;
+
+}
+
+i {
+  vertical-align: middle;
+  float: right;
+  padding: 0 5px 0
+}
+
+.leftside {
+  float: left;
+  max-width: 48%;
+  margin: 0 auto
+}
+
+main {
+  max-width: 850px;
+  margin: 30px auto;
+  overflow: auto
+}
+
+.modaldialogue {
+  position: absolute;
+  top: 40%;
+  left: 44%;
+  height: 200px;
+  width: 500px;
+  margin: -100px 0 0 -150px;
+  border-radius: 5px;
+  border: 5px solid #97F9F9;
+  background-color: #E2FDFD;
+  z-index: 21;
+  display: none;
+}
+
+.modalmask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  opacity: 0.2;
+  z-index: 20;
+  display: none;
+}
+
+.mode {
+  display: inline;
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  padding: 0
+}
+
+.modeselect {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+p {
+  padding: 5px;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.5
+}
+
+p#modaltext {
+  padding: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 50
+}
+
+ul {
+  float: left;
+  background: #CBD1DA;
+  width: 440px;
+  height: 440px;
+  border: 20px solid #8E9AAF;
+  border-radius: 15px
+}
