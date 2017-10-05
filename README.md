@@ -2,7 +2,7 @@
 
 [Play it here!](https://suzeshardlow.github.io/Unscramble/)
 
-<img src="images/Unscramble app on Macbook.jpg"></img>
+![Unscramble! game on a MacBook](readme_images/Unscramble-app-on-Macbook.jpg)
 
 ## Introduction
 
@@ -48,7 +48,7 @@ Before programming anything, I wrote some pseudocode describing what I needed to
 
 From this, I determined the tasks I needed to undertake and plugged them into a Trello board to help me stay on track.
 
-<img src="images/Unscramble Trello screen grab.jpg"></img>
+![Trello screen grab](readme_images/Unscramble-Trello-screen-grab.jpg)
 
 
 ## Build and Development
