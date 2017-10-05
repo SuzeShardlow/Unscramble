@@ -2,7 +2,7 @@
 
 [Play it here!](https://suzeshardlow.github.io/Unscramble/)
 
-<img src="Unscramble game screen grab.jpg"></img>
+<img src="Unscramble app screen grab.jpg"></img>
 
 ## Introduction
 
