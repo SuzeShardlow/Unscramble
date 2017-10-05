@@ -2,11 +2,13 @@
 
 [Play it here!](https://suzeshardlow.github.io/Unscramble/)
 
-<img src="Unscramble app screen grab.jpg"></img>
+<img src="Unscramble app on Macbook.jpg"></img>
 
 ## Introduction
 
-I attended a 12-week web development immersive bootcamp.  **After the first two weeks of classes (which covered HTML, CSS, basic JavaScript, jQuery and object-oriented programming), we were tasked to create a game using JavaScript in just seven days.**
+I recently attended a 12-week web development immersive bootcamp.
+
+**After the first two weeks of classes (which covered HTML, CSS, basic JavaScript, jQuery and object-oriented programming), we were tasked to create a game using JavaScript in just seven days.**
 
 To challenge myself and test my understanding of creating methods and functions and manipulating a DOM, I chose a game which was heavy on logic.
 
