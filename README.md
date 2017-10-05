@@ -1,5 +1,9 @@
 # Unscramble!
 
+[Play it here!](https://suzeshardlow.github.io/Unscramble/)
+
+<img src="Unscramble game screen grab.jpg"></img>
+
 ## Introduction
 
 I attended a 12-week web development immersive bootcamp.  **After the first two weeks of classes (which covered HTML, CSS, basic JavaScript, jQuery and object-oriented programming), we were tasked to create a game using JavaScript in just seven days.**
