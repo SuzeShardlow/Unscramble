@@ -2,7 +2,7 @@
 
 [Play it here!](https://suzeshardlow.github.io/Unscramble/)
 
-<img src="Unscramble app on Macbook.jpg"></img>
+<img src="images/Unscramble app on Macbook.jpg"></img>
 
 ## Introduction
 
@@ -16,6 +16,10 @@ I decided to digitise a toy I enjoyed playing with when I was a child - picture 
 
 ![Sliding tile toy](https://i.pinimg.com/originals/90/c0/14/90c014a120d166467668dd02e8c449a7.jpg)
 
+
+## Brief
+
+To create a JavaScript game of our choice.
 
 ## The game
 
@@ -44,10 +48,10 @@ Before programming anything, I wrote some pseudocode describing what I needed to
 
 From this, I determined the tasks I needed to undertake and plugged them into a Trello board to help me stay on track.
 
-<img src="Unscramble Trello screen grab.jpg"></img>
+<img src="images/Unscramble Trello screen grab.jpg"></img>
 
 
-## Build
+## Build and Development
 
 This game was built using JavaScript to handle the logic (check legal moves, check if the tiles were in the correct positions etc) and jQuery to manipulate the DOM.  I used CSS for the styling.
 
@@ -63,7 +67,7 @@ I had a strange feeling at the outset of this project that I could not just rand
 The modal was also a challenge because it was something we were not due to cover in class until much later in the course.
 
 
-## Bonus functionality
+## Bonus Functionality
 
 I actually found myself with some spare time at the end of the project week, so for a bonus I decided to create a second mode with letters instead of numbers, because the original game actually came as a pair of two toys - one with numbers and one with letters.
 
@@ -72,7 +76,7 @@ I then added a countdown timer, giving the player two minutes to complete the ga
 I also added a counter for the number of moves the player had made.
 
 
-## Future developments
+## Future Developments
 
 When I created this game, we had not yet covered styling in any depth, so I would like to revisit it and make it responsive so it can be played on mobile phones.
 
