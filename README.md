@@ -6,7 +6,7 @@ I attended a 12-week web development immersive bootcamp.  **After the first two 
 
 To challenge myself and test my understanding of creating methods and functions and manipulating a DOM, I chose a game which was heavy on logic.
 
-I chose to digitise a toy I enjoyed playing with when I was a child - picture courtesy of Pinterest:
+I decided to digitise a toy I enjoyed playing with when I was a child - picture courtesy of Pinterest:
 
 ![Sliding tile toy](https://i.pinimg.com/originals/90/c0/14/90c014a120d166467668dd02e8c449a7.jpg)
 
