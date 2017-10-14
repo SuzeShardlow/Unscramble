@@ -46,7 +46,7 @@ Before programming anything, I wrote some pseudocode describing what I needed to
 * If it is a legal move, then move the tile into the empty space.
 * If it is not a legal move, then trigger an animation on the space.
 
-From this, I determined the tasks I needed to undertake and plugged them into a Trello board to help me stay on track.
+From this, I determined the tasks I needed to undertake and plugged them into a [Trello](http://www.trello.com) board to help me stay on track.
 
 ![Trello screen grab](readme_images/Unscramble-Trello-screen-grab.jpg)
 
