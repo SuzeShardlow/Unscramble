@@ -59,6 +59,8 @@ I defined the legal moves for each position on the grid and stored these in an a
 
 I also defined the start point combinations and created an array for each of them (see **Challenges**).
 
+The code in this repo will run on your local machine without the need for an Internet connection.
+
 
 ## Challenges
 
