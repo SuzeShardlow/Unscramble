@@ -19,7 +19,7 @@ I decided to digitise a toy I enjoyed playing with when I was a child - picture 
 
 ## Brief
 
-To create a JavaScript game of our choice.
+To create a JavaScript game of our choice, with HTML and CSS so that the user can play it in the browser.
 
 ## The game
 
