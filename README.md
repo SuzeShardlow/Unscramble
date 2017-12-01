@@ -6,7 +6,7 @@
 
 ## Introduction
 
-I recently attended a 12-week web development immersive bootcamp.
+I recently trained to become a software engineer at a 12-week web development immersive bootcamp.
 
 **After the first two weeks of classes (which covered HTML, CSS, basic JavaScript, jQuery and object-oriented programming), we were tasked to create a game using JavaScript in just seven days.**
 
