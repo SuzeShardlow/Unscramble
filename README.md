@@ -1,6 +1,6 @@
 # Unscramble!
 
-[Play it here!](http://suzeshardlow.com/unscramble/)
+[Play it here!](https://suze.dev/coding_projects/unscramble/)
 
 ![Unscramble! game on a MacBook](readme_images/Unscramble-app-on-Macbook.jpg)
 
