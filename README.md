@@ -36,7 +36,7 @@ Before programming anything, I wrote some pseudocode describing what I needed to
 
 * A 4x4 grid needs to appear on the screen.
 * Each position on the grid needs to be identified by an ID number.
-* A number tile needs to appear in 15 of the 16 positions.  Therefore create a set of grids and apply one of them to the game
+* A number tile needs to appear in 15 of the 16 positions.  Therefore create a set of grids and apply one of them to the game.
 * Before the game starts and after each move, we need to compare the number on the tile with the position ID number.
 * If they match, then the tile is in the correct position and it must be shown in green.
 * If all the tiles are green, then the player has won and the game is over.
