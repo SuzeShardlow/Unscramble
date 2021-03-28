@@ -19,13 +19,13 @@ I decided to digitise a toy I enjoyed playing with when I was a child - picture 
 
 This game demonstrates my capability to create a JavaScript game with HTML and CSS so that the user can play it in the browser.
 
-## The game
+## The Game
 
 The game board consists of 16 positions and 15 tiles in a 4x4 grid.  Depending on the mode, the tiles bear either a number or a letter.
 
 The aim of the game is to move the tiles around the board so that they appear in numerical or alphabetical order, with the empty space in the bottom right.
 
-Tiles can only be moved if they touch the empty space.
+Tiles can only be moved if they are touching the empty space.
 
 
 ## Planning
