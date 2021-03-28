@@ -76,6 +76,6 @@ I also added a counter for the number of moves the player had made.
 
 ## Future Developments
 
-When I created this game, we had not yet covered styling in any depth, so I would like to revisit it and make it responsive so it can be played on mobile phones.
+When I created this game, I had not yet learnt about styling in any depth, so I would like to revisit it and make it responsive so it can be played on mobile phones.
 
 I would also like to add more grid combinations.
