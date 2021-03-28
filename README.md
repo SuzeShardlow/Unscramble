@@ -15,9 +15,9 @@ I decided to digitise a toy I enjoyed playing with when I was a child - picture 
 ![Sliding tile toy](https://i.pinimg.com/originals/90/c0/14/90c014a120d166467668dd02e8c449a7.jpg)
 
 
-## Brief
+## Tasks/Competencies/Skills
 
-To create a JavaScript game of our choice, with HTML and CSS so that the user can play it in the browser.
+This game demonstrates my capability to create a JavaScript game with HTML and CSS so that the user can play it in the browser.
 
 ## The game
 
