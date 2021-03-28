@@ -67,7 +67,7 @@ I had a strange feeling at the outset of this project that I could not just rand
 
 ## Bonus Functionality
 
-I actually found myself with some spare time at the end of the project week, so for a bonus I decided to create a second mode with letters instead of numbers, because the original game actually came as a pair of two puzzles - one with numbers and one with letters.
+I actually found myself with some spare time at the end of the week, so for a bonus I decided to create a second mode with letters instead of numbers, because the original game actually came as a pair of two puzzles - one with numbers and one with letters.
 
 I then added a countdown timer, giving the player two minutes to complete the game.
 
