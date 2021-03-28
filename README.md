@@ -64,8 +64,6 @@ The code in this repo will run on your local machine without the need for an Int
 
 I had a strange feeling at the outset of this project that I could not just randomise the numbers 1-15, drop them into the game board and expect that game board to be solvable.  I tested this theory beforehand and I realised I was correct - some number combinations can never be solved.  Therefore I had to spend some time playing with different combinations to come up with a few which were solvable.
 
-The modal was also a challenge because it was something we were not due to cover in class until much later in the course.
-
 
 ## Bonus Functionality
 
